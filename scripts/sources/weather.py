@@ -15,6 +15,12 @@ API: Open-Meteo Forecast API (free, no API key required)
 Docs: https://open-meteo.com/en/docs
 """
 
+import socket
+import urllib3.util.connection
+
+# Force IPv4 to avoid GitHub Actions IPv6 issues
+urllib3.util.connection.HAS_IPV6 = False
+
 import requests
 from datetime import datetime, timezone
 
