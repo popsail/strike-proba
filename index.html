@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strike Monitor - US/Israel Strike on Iran Probability</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>US/Israel Strike on Iran Monitor</h1>
+            <p class="subtitle">Real-time threat assessment based on multiple intelligence signals</p>
+        </header>
+
+        <section class="primary-display">
+            <div class="risk-gauge">
+                <div class="gauge-container">
+                    <svg viewBox="0 0 200 120" class="gauge-svg">
+                        <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+                        <path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+                    </svg>
+                    <div class="gauge-value">
+                        <span id="total-risk">--</span>
+                        <span class="gauge-percent">%</span>
+                    </div>
+                </div>
+                <div class="gauge-label">Strike Probability</div>
+            </div>
+
+            <div class="alert-level">
+                <div class="alert-label">Tactical Alert Level</div>
+                <div class="alert-value" id="alert-level">LOADING</div>
+            </div>
+
+            <div class="countdown-section">
+                <div class="countdown-label">Next Update</div>
+                <div class="countdown-value" id="countdown">--:--</div>
+                <div class="last-updated">Last updated: <span id="last-updated">--</span></div>
+            </div>
+        </section>
+
+        <section class="signals-grid">
+            <div class="signal-card" id="card-news">
+                <div class="card-header">
+                    <span class="card-icon">&#128240;</span>
+                    <span class="card-title">News Intel</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="news-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="news-detail">Loading...</div>
+                <canvas class="sparkline" id="news-sparkline" width="200" height="40"></canvas>
+            </div>
+
+            <div class="signal-card" id="card-aviation">
+                <div class="card-header">
+                    <span class="card-icon">&#9992;</span>
+                    <span class="card-title">Civil Aviation</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="aviation-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="aviation-detail">Loading...</div>
+                <canvas class="sparkline" id="aviation-sparkline" width="200" height="40"></canvas>
+            </div>
+
+            <div class="signal-card" id="card-tanker">
+                <div class="card-header">
+                    <span class="card-icon">&#128747;</span>
+                    <span class="card-title">Military Tankers</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="tanker-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="tanker-detail">Loading...</div>
+                <canvas class="sparkline" id="tanker-sparkline" width="200" height="40"></canvas>
+            </div>
+
+            <div class="signal-card" id="card-pentagon">
+                <div class="card-header">
+                    <span class="card-icon">&#127829;</span>
+                    <span class="card-title">Pentagon Pizza</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="pentagon-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="pentagon-detail">Loading...</div>
+                <canvas class="sparkline" id="pentagon-sparkline" width="200" height="40"></canvas>
+            </div>
+
+            <div class="signal-card" id="card-polymarket">
+                <div class="card-header">
+                    <span class="card-icon">&#128200;</span>
+                    <span class="card-title">Market Odds</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="polymarket-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="polymarket-detail">Loading...</div>
+                <canvas class="sparkline" id="polymarket-sparkline" width="200" height="40"></canvas>
+            </div>
+
+            <div class="signal-card" id="card-weather">
+                <div class="card-header">
+                    <span class="card-icon">&#9729;</span>
+                    <span class="card-title">Weather</span>
+                    <span class="live-badge">LIVE</span>
+                </div>
+                <div class="card-risk">
+                    <span class="risk-value" id="weather-risk">--</span>
+                    <span class="risk-percent">%</span>
+                </div>
+                <div class="card-detail" id="weather-detail">Loading...</div>
+                <canvas class="sparkline" id="weather-sparkline" width="200" height="40"></canvas>
+            </div>
+        </section>
+
+        <section class="trend-section">
+            <h2>72-Hour Risk Trend</h2>
+            <canvas id="trend-chart" width="800" height="200"></canvas>
+        </section>
+
+        <section class="about-section">
+            <h2>About This Monitor</h2>
+            <p>This dashboard aggregates multiple open-source intelligence signals to estimate the probability of a US or Israeli military strike on Iran. Data is updated every 10 minutes.</p>
+            <h3>Signal Sources</h3>
+            <ul>
+                <li><strong>News Intel:</strong> Analyzes recent news articles for strike-related keywords and escalation indicators.</li>
+                <li><strong>Civil Aviation:</strong> Monitors civilian air traffic over Iran and the Persian Gulf for unusual patterns.</li>
+                <li><strong>Military Tankers:</strong> Tracks aerial refueling aircraft in the Middle East region.</li>
+                <li><strong>Pentagon Pizza:</strong> Monitors activity at pizza restaurants near the Pentagon (historically correlated with late-night operations).</li>
+                <li><strong>Market Odds:</strong> Prediction market probabilities from Polymarket.</li>
+                <li><strong>Weather:</strong> Weather conditions over Iran (clear weather favors air operations).</li>
+            </ul>
+            <p class="disclaimer">This is an experimental tool for informational purposes only. Do not make decisions based on this data.</p>
+        </section>
+
+        <footer>
+            <p>Data refreshes automatically every 10 minutes</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

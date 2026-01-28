@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:backyonatan-alt.github.io)",
+      "WebSearch",
+      "WebFetch(domain:docs.polymarket.com)",
+      "WebFetch(domain:openskynetwork.github.io)",
+      "WebFetch(domain:outscraper.com)"
+    ]
+  }
+}
