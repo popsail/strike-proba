@@ -15,11 +15,12 @@ BASE_URL = 'https://opensky-network.org/api/states/all'
 
 # Wider Middle East bounding box
 # Covers: Eastern Mediterranean, Arabian Peninsula, Persian Gulf, Iraq, Iran
+# Based on country bounding boxes from https://gist.github.com/graydon/11198540
 MIDDLE_EAST_BBOX = {
-    'lamin': 12.0,   # South of Yemen
-    'lamax': 42.0,   # Turkey
-    'lomin': 30.0,   # Eastern Mediterranean
-    'lomax': 65.0    # Eastern Iran/Pakistan border
+    'lamin': 12.0,    # South Yemen (12.1°N)
+    'lamax': 42.2,    # Northern Turkey (42.1°N)
+    'lomin': 32.0,    # Eastern Mediterranean/Israel (34.3°E with buffer)
+    'lomax': 63.5     # Eastern Iran border (63.3°E)
 }
 
 # Known military tanker callsign prefixes

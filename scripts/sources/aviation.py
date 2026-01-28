@@ -13,22 +13,22 @@ from datetime import datetime
 
 BASE_URL = 'https://opensky-network.org/api/states/all'
 
-# Iran bounding box (approximate)
-# Latitude: 25°N to 40°N
-# Longitude: 44°E to 63°E
+# Iran bounding box (accurate)
+# Source: https://gist.github.com/graydon/11198540
 IRAN_BBOX = {
-    'lamin': 25.0,
-    'lamax': 40.0,
-    'lomin': 44.0,
-    'lomax': 63.0
+    'lamin': 25.08,   # Southern coast (Persian Gulf)
+    'lamax': 39.71,   # Northern border (Azerbaijan/Armenia)
+    'lomin': 44.11,   # Western border (Iraq/Turkey)
+    'lomax': 63.32    # Eastern border (Afghanistan/Pakistan)
 }
 
-# Extended Persian Gulf region
+# Persian Gulf region (international waters + coastal areas)
+# Covers: Kuwait, Bahrain, Qatar, UAE, Oman coast, Iran coast
 PERSIAN_GULF_BBOX = {
-    'lamin': 23.0,
-    'lamax': 32.0,
-    'lomin': 48.0,
-    'lomax': 60.0
+    'lamin': 23.5,    # South of Qatar/UAE
+    'lamax': 30.5,    # Kuwait/Iran coast
+    'lomin': 47.5,    # Kuwait coast
+    'lomax': 58.0     # Oman/Strait of Hormuz
 }
 
 # Baseline expected aircraft count (typical busy period)
