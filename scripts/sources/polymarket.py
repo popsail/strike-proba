@@ -3,171 +3,167 @@ Polymarket Module
 Fetches prediction market odds for US/Israel strike on Iran.
 
 API: Polymarket Gamma Markets API
-Docs: https://docs.polymarket.com/developers/gamma-markets-api/overview
+Docs: https://docs.polymarket.com/developers/gamma-markets-api/get-events
 Base URL: https://gamma-api.polymarket.com
 No authentication required (public read-only access).
+
+Query params for /events:
+- slug: array of strings to filter by event slug
+- closed: boolean to filter by closed status
 """
 
+import json
 import requests
 from datetime import datetime
 
 BASE_URL = 'https://gamma-api.polymarket.com'
 
-# Search terms to find relevant markets
-IRAN_SEARCH_TERMS = [
-    'Iran strike',
-    'Iran attack',
-    'Israel Iran',
-    'US Iran military',
-    'bomb Iran',
+# Target event slugs for Iran strike markets (avoiding near-term expiry)
+TARGET_EVENTS = [
+    {
+        'slug': 'usisrael-strikes-iran-by',
+        'name': 'US/Israel strikes Iran',
+        'preferred_markets': ['February 28', 'March 31', 'June 30']
+    },
+    {
+        'slug': 'israel-strikes-iran-by-june-30-2026',
+        'name': 'Israel strikes Iran by June 30',
+        'preferred_markets': ['June 30']
+    },
+    {
+        'slug': 'us-x-iran-military-engagement-by',
+        'name': 'US x Iran Military Engagement',
+        'preferred_markets': ['March 31', 'June 30']
+    },
 ]
 
 
-def search_markets(query):
+def fetch_events_by_slugs(slugs):
     """
-    Search for markets matching query.
-    """
-    url = f'{BASE_URL}/markets'
+    Fetch events by their slugs from Gamma API.
+    Uses the slug query parameter which accepts an array.
 
-    params = {
-        'limit': 50,
-        'active': 'true',
-        'closed': 'false'
-    }
+    Docs: https://docs.polymarket.com/developers/gamma-markets-api/get-events
+    """
+    url = f'{BASE_URL}/events'
+
+    # Build params with multiple slug values
+    params = [('slug', s) for s in slugs]
+    params.append(('closed', 'false'))
 
     response = requests.get(url, params=params, timeout=30)
     response.raise_for_status()
 
-    markets = response.json()
-
-    # Filter markets by query (case-insensitive)
-    query_lower = query.lower()
-    matching = []
-
-    for market in markets:
-        question = (market.get('question') or '').lower()
-        description = (market.get('description') or '').lower()
-
-        if query_lower in question or query_lower in description:
-            matching.append(market)
-
-    return matching
+    return response.json()
 
 
 def get_market_price(market):
     """
-    Get current price (probability) for a market.
-    Price is typically 0-1 representing probability.
+    Extract YES price from market's outcomePrices.
+    outcomePrices is a JSON string: '["yes_price", "no_price"]'
     """
-    # Polymarket markets have outcomes with prices
-    # For binary markets, YES price = probability
-    outcomes = market.get('outcomes', [])
-    outcome_prices = market.get('outcomePrices', [])
+    prices_raw = market.get('outcomePrices')
 
-    if outcome_prices and len(outcome_prices) > 0:
-        # First outcome is typically "Yes"
-        try:
-            return float(outcome_prices[0])
-        except (ValueError, TypeError):
-            pass
+    if not prices_raw:
+        return None
 
-    # Try alternative price field
-    price = market.get('price')
-    if price is not None:
-        try:
-            return float(price)
-        except (ValueError, TypeError):
-            pass
+    try:
+        # Parse JSON string to list
+        if isinstance(prices_raw, str):
+            prices = json.loads(prices_raw)
+        else:
+            prices = prices_raw
+
+        if prices and len(prices) >= 1:
+            return float(prices[0])
+    except (ValueError, TypeError, json.JSONDecodeError):
+        pass
 
     return None
 
 
-def find_iran_strike_market():
+def find_best_market(event, preferred_dates):
     """
-    Find the most relevant Iran strike prediction market.
+    Find the best market from an event based on preferred dates.
+    Returns the market with highest preference that has valid prices.
     """
-    all_markets = []
+    markets = event.get('markets', [])
 
-    for term in IRAN_SEARCH_TERMS:
-        try:
-            markets = search_markets(term)
-            all_markets.extend(markets)
-        except Exception:
-            continue
+    if not markets:
+        return None
 
-    # Deduplicate by market ID
-    seen_ids = set()
-    unique_markets = []
-    for market in all_markets:
-        market_id = market.get('id')
-        if market_id and market_id not in seen_ids:
-            seen_ids.add(market_id)
-            unique_markets.append(market)
+    # Try preferred dates in order
+    for date_str in preferred_dates:
+        for market in markets:
+            question = market.get('question', '')
+            if date_str.lower() in question.lower():
+                price = get_market_price(market)
+                if price is not None and price > 0:
+                    return market
 
-    # Score markets by relevance
-    def relevance_score(market):
-        question = (market.get('question') or '').lower()
-        score = 0
+    # Fallback: first market with valid price
+    for market in markets:
+        price = get_market_price(market)
+        if price is not None and price > 0:
+            return market
 
-        # Boost for key terms
-        if 'iran' in question:
-            score += 10
-        if 'strike' in question or 'attack' in question:
-            score += 10
-        if 'israel' in question:
-            score += 5
-        if 'us' in question or 'united states' in question or 'america' in question:
-            score += 5
-        if 'military' in question:
-            score += 3
-        if 'bomb' in question:
-            score += 3
-
-        # Boost for active trading (volume)
-        volume = market.get('volume', 0)
-        if volume:
-            try:
-                score += min(20, int(float(volume) / 10000))
-            except (ValueError, TypeError):
-                pass
-
-        return score
-
-    # Sort by relevance
-    unique_markets.sort(key=relevance_score, reverse=True)
-
-    return unique_markets[0] if unique_markets else None
+    return None
 
 
 def get_polymarket_risk():
     """
     Get prediction market odds for Iran strike.
+    Fetches target events by slug and returns averaged risk.
     """
-    market = find_iran_strike_market()
+    slugs = [t['slug'] for t in TARGET_EVENTS]
+    events = fetch_events_by_slugs(slugs)
 
-    if not market:
-        raise ValueError('No relevant Iran strike market found on Polymarket')
+    # Map events by slug for lookup
+    events_by_slug = {e.get('slug'): e for e in events}
 
-    price = get_market_price(market)
+    results = []
 
-    if price is None:
-        raise ValueError('Could not get price for market')
+    for target in TARGET_EVENTS:
+        event = events_by_slug.get(target['slug'])
 
-    # Convert price to percentage (0-100)
-    odds_percent = int(price * 100)
-    risk = odds_percent  # Direct mapping: market odds = risk
+        if not event:
+            continue
 
-    question = market.get('question', 'Unknown market')
+        market = find_best_market(event, target['preferred_markets'])
+
+        if not market:
+            continue
+
+        price = get_market_price(market)
+
+        if price is None:
+            continue
+
+        results.append({
+            'event_slug': target['slug'],
+            'event_name': target['name'],
+            'market_question': market.get('question', ''),
+            'price': price,
+            'odds_percent': int(price * 100)
+        })
+
+    if not results:
+        raise ValueError('No valid Iran strike markets found on Polymarket')
+
+    # Average odds across all markets
+    avg_odds = sum(r['odds_percent'] for r in results) / len(results)
+    risk = int(avg_odds)
+
+    # Best market for detail display
+    best = max(results, key=lambda r: r['odds_percent'])
 
     return {
         'risk': risk,
-        'detail': f'{odds_percent}% odds',
+        'detail': f"{best['odds_percent']}% odds",
         'raw_data': {
-            'odds': odds_percent,
-            'price': price,
-            'market': question,
-            'market_id': market.get('id'),
-            'volume': market.get('volume'),
+            'odds': risk,
+            'markets': results,
+            'best_market': best['market_question'],
             'timestamp': datetime.utcnow().isoformat()
         }
     }
