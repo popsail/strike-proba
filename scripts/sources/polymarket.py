@@ -14,7 +14,7 @@ Query params for /events:
 
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 BASE_URL = 'https://gamma-api.polymarket.com'
 
@@ -164,7 +164,7 @@ def get_polymarket_risk():
             'odds': risk,
             'markets': results,
             'best_market': best['market_question'],
-            'timestamp': datetime.utcnow().isoformat()
+            'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
 

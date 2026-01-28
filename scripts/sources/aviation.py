@@ -9,7 +9,7 @@ Uses anonymous access (no authentication required).
 """
 
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 BASE_URL = 'https://opensky-network.org/api/states/all'
 
@@ -124,7 +124,7 @@ def get_aviation_risk():
             'gulf_baseline': BASELINE_AIRCRAFT_GULF,
             'iran_ratio': round(iran_ratio, 2),
             'gulf_ratio': round(gulf_ratio, 2),
-            'timestamp': datetime.utcnow().isoformat()
+            'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
 

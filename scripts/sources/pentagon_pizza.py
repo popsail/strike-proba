@@ -11,7 +11,7 @@ Docs: https://app.outscraper.com/api-docs
 
 import os
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 OUTSCRAPER_API_KEY = os.environ.get('OUTSCRAPER_API_KEY')
 BASE_URL = 'https://api.app.outscraper.com/maps/search-v3'
@@ -201,7 +201,7 @@ def get_pentagon_pizza_risk():
             'risk_contribution': risk,
             'status': status,
             'places': places_data,
-            'timestamp': datetime.utcnow().isoformat(),
+            'timestamp': datetime.now(timezone.utc).isoformat(),
             'is_late_night': is_late_night,
             'is_weekend': is_weekend
         }

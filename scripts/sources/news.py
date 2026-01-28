@@ -8,7 +8,7 @@ Docs: https://newsapi.org/docs/endpoints/everything
 
 import os
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
 BASE_URL = 'https://newsapi.org/v2/everything'
@@ -42,8 +42,8 @@ def fetch_news():
     all_articles = []
     seen_titles = set()
 
-    # Search from last 24 hours
-    from_date = (datetime.utcnow() - timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%S')
+    # Search from last 7 days (NewsAPI requires YYYY-MM-DD format)
+    from_date = (datetime.now(timezone.utc) - timedelta(days=7)).strftime('%Y-%m-%d')
 
     for query in SEARCH_QUERIES:
         params = {
@@ -135,7 +135,7 @@ def get_news_risk():
             'articles': scored_articles[:25],  # Limit to 25 for JSON size
             'total_articles': article_count,
             'critical_count': critical_count,
-            'timestamp': datetime.utcnow().isoformat()
+            'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
 

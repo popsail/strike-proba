@@ -9,7 +9,7 @@ Uses anonymous access (no authentication required).
 """
 
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 BASE_URL = 'https://opensky-network.org/api/states/all'
 
@@ -137,7 +137,7 @@ def get_tanker_risk():
             'tanker_count': tanker_count,
             'callsigns': callsigns,
             'tankers': tankers[:10],  # Limit details
-            'timestamp': datetime.utcnow().isoformat()
+            'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
 

@@ -8,7 +8,7 @@ Docs: https://open-meteo.com/en/docs
 """
 
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 BASE_URL = 'https://api.open-meteo.com/v1/forecast'
 
@@ -193,7 +193,7 @@ def get_weather_risk():
         'raw_data': {
             'avg_score': round(avg_score, 1),
             'locations': location_data,
-            'timestamp': datetime.utcnow().isoformat()
+            'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
 
