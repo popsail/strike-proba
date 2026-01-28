@@ -5,7 +5,11 @@
       "WebSearch",
       "WebFetch(domain:docs.polymarket.com)",
       "WebFetch(domain:openskynetwork.github.io)",
-      "WebFetch(domain:outscraper.com)"
+      "WebFetch(domain:outscraper.com)",
+      "Bash(python scripts/sources/weather.py:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
