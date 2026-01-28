@@ -47,7 +47,7 @@ def fetch_place_data(place_id):
         'async': 'false'
     }
 
-    response = requests.get(BASE_URL, params=params, headers=headers, timeout=60)
+    response = requests.get(BASE_URL, params=params, headers=headers, timeout=90)
     response.raise_for_status()
 
     # Outscraper returns {"data": [[{place}]]}
