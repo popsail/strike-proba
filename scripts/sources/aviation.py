@@ -4,17 +4,14 @@ Monitors civilian air traffic over Iran using OpenSky Network API.
 
 API: OpenSky Network REST API /states/all
 Docs: https://openskynetwork.github.io/opensky-api/rest.html
+
+Uses anonymous access (no authentication required).
 """
 
-import os
 import requests
 from datetime import datetime
 
-OPENSKY_CLIENT_ID = os.environ.get('OPENSKY_CLIENT_ID')
-OPENSKY_CLIENT_SECRET = os.environ.get('OPENSKY_CLIENT_SECRET')
-
 BASE_URL = 'https://opensky-network.org/api/states/all'
-TOKEN_URL = 'https://opensky-network.org/api/auth/token'
 
 # Iran bounding box (approximate)
 # Latitude: 25°N to 40°N
@@ -39,36 +36,11 @@ BASELINE_AIRCRAFT_IRAN = 80
 BASELINE_AIRCRAFT_GULF = 50
 
 
-def get_oauth_token():
-    """
-    Get OAuth2 access token from OpenSky Network.
-    """
-    if not OPENSKY_CLIENT_ID or not OPENSKY_CLIENT_SECRET:
-        raise ValueError('OPENSKY_CLIENT_ID and OPENSKY_CLIENT_SECRET must be set')
-
-    response = requests.post(
-        TOKEN_URL,
-        data={
-            'grant_type': 'client_credentials',
-            'client_id': OPENSKY_CLIENT_ID,
-            'client_secret': OPENSKY_CLIENT_SECRET
-        },
-        timeout=30
-    )
-    response.raise_for_status()
-
-    data = response.json()
-    return data.get('access_token')
-
-
-def fetch_aircraft(bbox, token):
+def fetch_aircraft(bbox):
     """
     Fetch aircraft states within a bounding box.
+    Uses anonymous access (no authentication).
     """
-    headers = {
-        'Authorization': f'Bearer {token}'
-    }
-
     params = {
         'lamin': bbox['lamin'],
         'lamax': bbox['lamax'],
@@ -76,7 +48,7 @@ def fetch_aircraft(bbox, token):
         'lomax': bbox['lomax']
     }
 
-    response = requests.get(BASE_URL, params=params, headers=headers, timeout=30)
+    response = requests.get(BASE_URL, params=params, timeout=30)
     response.raise_for_status()
 
     return response.json()
@@ -91,7 +63,7 @@ def parse_states(data):
     8: on_ground, 9: velocity, 10: true_track, 11: vertical_rate,
     12: sensors, 13: geo_altitude, 14: squawk, 15: spi, 16: position_source
     """
-    states = data.get('states', [])
+    states = data.get('states') or []
     aircraft = []
 
     for state in states:
@@ -115,15 +87,13 @@ def get_aviation_risk():
     Monitor civilian aviation over Iran and calculate risk score.
     Lower than normal traffic = higher risk (airspace avoidance).
     """
-    token = get_oauth_token()
-
     # Get aircraft over Iran
-    iran_data = fetch_aircraft(IRAN_BBOX, token)
+    iran_data = fetch_aircraft(IRAN_BBOX)
     iran_aircraft = parse_states(iran_data)
     iran_count = len([a for a in iran_aircraft if not a['on_ground']])
 
     # Get aircraft over Persian Gulf
-    gulf_data = fetch_aircraft(PERSIAN_GULF_BBOX, token)
+    gulf_data = fetch_aircraft(PERSIAN_GULF_BBOX)
     gulf_aircraft = parse_states(gulf_data)
     gulf_count = len([a for a in gulf_aircraft if not a['on_ground']])
 

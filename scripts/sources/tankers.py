@@ -4,17 +4,14 @@ Tracks aerial refueling aircraft in the Middle East region using OpenSky Network
 
 API: OpenSky Network REST API /states/all
 Docs: https://openskynetwork.github.io/opensky-api/rest.html
+
+Uses anonymous access (no authentication required).
 """
 
-import os
 import requests
 from datetime import datetime
 
-OPENSKY_CLIENT_ID = os.environ.get('OPENSKY_CLIENT_ID')
-OPENSKY_CLIENT_SECRET = os.environ.get('OPENSKY_CLIENT_SECRET')
-
 BASE_URL = 'https://opensky-network.org/api/states/all'
-TOKEN_URL = 'https://opensky-network.org/api/auth/token'
 
 # Wider Middle East bounding box
 # Covers: Eastern Mediterranean, Arabian Peninsula, Persian Gulf, Iraq, Iran
@@ -47,40 +44,12 @@ TANKER_CALLSIGN_PREFIXES = [
     'BRASS',   # Tanker
 ]
 
-# Countries that operate significant tanker fleets in the region
-TANKER_COUNTRIES = ['United States', 'United Kingdom', 'France', 'Israel']
 
-
-def get_oauth_token():
-    """
-    Get OAuth2 access token from OpenSky Network.
-    """
-    if not OPENSKY_CLIENT_ID or not OPENSKY_CLIENT_SECRET:
-        raise ValueError('OPENSKY_CLIENT_ID and OPENSKY_CLIENT_SECRET must be set')
-
-    response = requests.post(
-        TOKEN_URL,
-        data={
-            'grant_type': 'client_credentials',
-            'client_id': OPENSKY_CLIENT_ID,
-            'client_secret': OPENSKY_CLIENT_SECRET
-        },
-        timeout=30
-    )
-    response.raise_for_status()
-
-    data = response.json()
-    return data.get('access_token')
-
-
-def fetch_aircraft(bbox, token):
+def fetch_aircraft(bbox):
     """
     Fetch aircraft states within a bounding box.
+    Uses anonymous access (no authentication).
     """
-    headers = {
-        'Authorization': f'Bearer {token}'
-    }
-
     params = {
         'lamin': bbox['lamin'],
         'lamax': bbox['lamax'],
@@ -88,13 +57,13 @@ def fetch_aircraft(bbox, token):
         'lomax': bbox['lomax']
     }
 
-    response = requests.get(BASE_URL, params=params, headers=headers, timeout=30)
+    response = requests.get(BASE_URL, params=params, timeout=30)
     response.raise_for_status()
 
     return response.json()
 
 
-def is_tanker(callsign, origin_country):
+def is_tanker(callsign):
     """
     Check if an aircraft might be a military tanker based on callsign.
     """
@@ -116,11 +85,9 @@ def get_tanker_risk():
     Track military tankers in the Middle East and calculate risk score.
     More tankers = higher risk (refueling support for operations).
     """
-    token = get_oauth_token()
-
     # Fetch all aircraft in region
-    data = fetch_aircraft(MIDDLE_EAST_BBOX, token)
-    states = data.get('states', [])
+    data = fetch_aircraft(MIDDLE_EAST_BBOX)
+    states = data.get('states') or []
 
     tankers = []
 
@@ -134,7 +101,7 @@ def get_tanker_risk():
             if on_ground:
                 continue
 
-            if is_tanker(callsign, origin_country):
+            if is_tanker(callsign):
                 tankers.append({
                     'icao24': state[0],
                     'callsign': callsign,
