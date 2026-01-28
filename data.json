@@ -1,0 +1,211 @@
+{
+  "news": {
+    "risk": 48,
+    "detail": "0.243% global coverage",
+    "raw_data": {
+      "coverage_pct": 0.2426,
+      "avg_coverage_pct": 0.3628,
+      "data_points": 82,
+      "latest_timestamp": "2026-01-28T21:15:00+00:00",
+      "timestamp": "2026-01-28T23:39:46.566685+00:00"
+    },
+    "history": [
+      48
+    ]
+  },
+  "aviation": {
+    "risk": 0,
+    "detail": "244 flights in region",
+    "raw_data": {
+      "total_count": 244,
+      "iran_count": 103,
+      "gulf_count": 141,
+      "baseline_avg": null,
+      "deviation_pct": null,
+      "history_length": 0,
+      "timestamp": "2026-01-28T23:39:47.662995+00:00",
+      "baseline_history": [
+        244
+      ]
+    },
+    "history": [
+      0
+    ]
+  },
+  "tanker": {
+    "risk": 0,
+    "detail": "0 detected (normal)",
+    "raw_data": {
+      "tanker_count": 0,
+      "callsigns": [],
+      "baseline_avg": null,
+      "ratio_to_baseline": null,
+      "is_surge": false,
+      "history_length": 0,
+      "tankers": [],
+      "timestamp": "2026-01-28T23:39:48.142691+00:00",
+      "baseline_history": [
+        0
+      ]
+    },
+    "history": [
+      0
+    ]
+  },
+  "pentagon": {
+    "risk": 32,
+    "detail": "Normal",
+    "raw_data": {
+      "score": 54.0,
+      "risk_contribution": 32,
+      "status": "Normal",
+      "places": [
+        {
+          "name": "Wiseguy Pizza",
+          "current_busyness": 54,
+          "baseline": 43.0,
+          "score": 80,
+          "status": "elevated"
+        },
+        {
+          "name": "We, The Pizza",
+          "current_busyness": 0,
+          "baseline": 51.5,
+          "score": 0,
+          "status": "normal"
+        },
+        {
+          "name": "California Pizza Kitchen at Pentagon",
+          "current_busyness": 5,
+          "baseline": 63.5,
+          "score": 3,
+          "status": "normal"
+        },
+        {
+          "name": "Extreme Pizza",
+          "current_busyness": 96,
+          "baseline": 55.2,
+          "score": 100,
+          "status": "high"
+        },
+        {
+          "name": "District Pizza Palace",
+          "current_busyness": 63,
+          "baseline": 45.6,
+          "score": 87,
+          "status": "elevated"
+        }
+      ],
+      "timestamp": "2026-01-28T23:41:04.864565+00:00",
+      "is_late_night": true,
+      "is_weekend": false
+    },
+    "history": [
+      32
+    ]
+  },
+  "polymarket": {
+    "risk": 54,
+    "detail": "58% odds",
+    "raw_data": {
+      "odds": 54,
+      "markets": [
+        {
+          "event_slug": "usisrael-strikes-iran-by",
+          "event_name": "US/Israel strikes Iran",
+          "market_question": "Will US or Israel strike Iran by February 28, 2026?",
+          "price": 0.485,
+          "odds_percent": 48
+        },
+        {
+          "event_slug": "israel-strikes-iran-by-june-30-2026",
+          "event_name": "Israel strikes Iran by June 30",
+          "market_question": "Israel strikes Iran by June 30, 2026?",
+          "price": 0.585,
+          "odds_percent": 58
+        },
+        {
+          "event_slug": "us-x-iran-military-engagement-by",
+          "event_name": "US x Iran Military Engagement",
+          "market_question": "U.S. x Iran Military Engagement by March 31, 2026?",
+          "price": 0.58,
+          "odds_percent": 57
+        }
+      ],
+      "best_market": "Israel strikes Iran by June 30, 2026?",
+      "timestamp": "2026-01-28T23:41:05.114205+00:00"
+    },
+    "history": [
+      54
+    ]
+  },
+  "weather": {
+    "risk": 45,
+    "detail": "marginal",
+    "raw_data": {
+      "avg_score": 45.0,
+      "locations": [
+        {
+          "name": "Tehran",
+          "score": 40,
+          "temp": 5.5,
+          "visibility": 61040.0,
+          "clouds": 100,
+          "wind_speed": 9.2,
+          "weather_code": 61,
+          "description": "slight rain",
+          "condition": "marginal"
+        },
+        {
+          "name": "Isfahan",
+          "score": 50,
+          "temp": 1.2,
+          "visibility": 57500.0,
+          "clouds": 100,
+          "wind_speed": 5.2,
+          "weather_code": 3,
+          "description": "overcast",
+          "condition": "marginal"
+        },
+        {
+          "name": "Natanz",
+          "score": 50,
+          "temp": 4.8,
+          "visibility": 75880.0,
+          "clouds": 100,
+          "wind_speed": 6.6,
+          "weather_code": 3,
+          "description": "overcast",
+          "condition": "marginal"
+        },
+        {
+          "name": "Bushehr",
+          "score": 40,
+          "temp": 18.1,
+          "visibility": 24140.0,
+          "clouds": 100,
+          "wind_speed": 14.8,
+          "weather_code": 80,
+          "description": "slight rain showers",
+          "condition": "marginal"
+        }
+      ],
+      "timestamp": "2026-01-28T23:41:06.964158+00:00"
+    },
+    "history": [
+      45
+    ]
+  },
+  "total_risk": {
+    "risk": 31,
+    "history": [
+      {
+        "timestamp": 1769643666964,
+        "risk": 31,
+        "pinned": true
+      }
+    ],
+    "elevated_count": 1
+  },
+  "last_updated": "2026-01-28T23:41:06.964201+00:00"
+}
