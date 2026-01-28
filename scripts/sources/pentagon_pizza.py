@@ -16,21 +16,23 @@ from datetime import datetime, timezone
 OUTSCRAPER_API_KEY = os.environ.get('OUTSCRAPER_API_KEY')
 BASE_URL = 'https://api.app.outscraper.com/maps/search-v3'
 
-# Pizza places near Pentagon to monitor
-# These are well-known pizza chains near the Pentagon
+# Pizza places near Pentagon to monitor (by place_id for reliable results)
+# These are pizza places in Pentagon City/Crystal City, Arlington VA
 PENTAGON_PIZZA_PLACES = [
-    "Domino's Pizza, Pentagon City, Arlington, VA",
-    "Papa John's, Pentagon City, Arlington, VA",
-    "Pizza Hut, Crystal City, Arlington, VA",
+    'ChIJv3hqkuW3t4kRjuvLKz6arZI',  # Wiseguy Pizza, 710 12th St S
+    'ChIJS1rpOC-3t4kRsLyM6aftM8k',  # We, The Pizza, 2110 Crystal Dr
+    'ChIJ7y7tKd-2t4kRVQLgS4v63A4',  # California Pizza Kitchen, 1201 S Hayes St
+    'ChIJcYireCe3t4kR4d9trEbGYjc',  # Extreme Pizza, 1419 S Fern St
+    'ChIJ42QeLXu3t4kRnArvcaz2o3A',  # District Pizza Palace, 2325 S Eads St
 ]
 
 # Day indices (Monday = 0)
 DAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 
-def fetch_place_data(query):
+def fetch_place_data(place_id):
     """
-    Fetch place data including popular times from Outscraper.
+    Fetch place data including popular times from Outscraper by place_id.
     """
     if not OUTSCRAPER_API_KEY:
         raise ValueError('OUTSCRAPER_API_KEY environment variable not set')
@@ -40,7 +42,7 @@ def fetch_place_data(query):
     }
 
     params = {
-        'query': query,
+        'query': place_id,
         'limit': 1,
         'async': 'false'
     }
@@ -48,62 +50,65 @@ def fetch_place_data(query):
     response = requests.get(BASE_URL, params=params, headers=headers, timeout=60)
     response.raise_for_status()
 
+    # Outscraper returns {"data": [[{place}]]}
     data = response.json()
+    return data['data'][0][0]
 
-    # Outscraper returns a list of results
-    if data and len(data) > 0 and len(data[0]) > 0:
-        return data[0][0]
 
+def get_live_busyness(popular_times):
+    """
+    Get live busyness from popular_times data.
+    API returns {'day': 'live', 'percentage': N, 'title': '...'} entry.
+    """
+    for entry in popular_times:
+        if entry.get('day') == 'live':
+            return entry['percentage']
     return None
 
 
-def get_current_busyness(popular_times, now=None):
+def get_historical_busyness(popular_times, day_index, hour):
     """
-    Get current busyness from popular_times data.
-    popular_times format: list of 7 days, each with 'data' array of 24 hourly values.
+    Get historical busyness for specific day/hour.
+    API structure: {'day': 1-7, 'popular_times': [{'hour': N, 'percentage': X}, ...]}
+    Python weekday: 0=Mon...6=Sun -> API day: 1=Mon...7=Sun
     """
-    if now is None:
-        now = datetime.now()
+    api_day = day_index + 1  # Convert Python weekday to API day
 
-    # Get current day (0=Monday in Python, but Google uses 0=Sunday sometimes)
-    # Outscraper typically uses Monday=0
-    day_index = now.weekday()
-    hour = now.hour
-
-    if not popular_times or len(popular_times) <= day_index:
-        return None
-
-    day_data = popular_times[day_index]
-
-    if not day_data or 'data' not in day_data:
-        return None
-
-    hourly_data = day_data['data']
-
-    if not hourly_data or len(hourly_data) <= hour:
-        return None
-
-    return hourly_data[hour]
+    for entry in popular_times:
+        if entry.get('day') == api_day:
+            for hour_data in entry['popular_times']:
+                if hour_data['hour'] == hour:
+                    return hour_data['percentage']
+    return None
 
 
-def get_baseline_busyness(popular_times, day_index, hour):
+def get_baseline_busyness(popular_times, hour):
     """
     Get average busyness for this hour across all days (baseline).
+    If hour doesn't exist (e.g., late night when closed), use overall average.
     """
-    if not popular_times:
-        return 50  # Default baseline
+    hour_total = 0
+    hour_count = 0
+    all_total = 0
+    all_count = 0
 
-    total = 0
-    count = 0
+    for entry in popular_times:
+        if entry.get('day') == 'live':
+            continue
+        for hour_data in entry['popular_times']:
+            if hour_data['percentage'] > 0:
+                all_total += hour_data['percentage']
+                all_count += 1
+                if hour_data['hour'] == hour:
+                    hour_total += hour_data['percentage']
+                    hour_count += 1
 
-    for day in popular_times:
-        if day and 'data' in day and len(day['data']) > hour:
-            val = day['data'][hour]
-            if val is not None and val > 0:
-                total += val
-                count += 1
-
-    return total / count if count > 0 else 50
+    # Prefer specific hour average, fallback to overall average
+    if hour_count > 0:
+        return hour_total / hour_count
+    elif all_count > 0:
+        return all_total / all_count
+    return None
 
 
 def get_pentagon_pizza_risk():
@@ -123,48 +128,44 @@ def get_pentagon_pizza_risk():
     total_score = 0
     valid_places = 0
 
-    for query in PENTAGON_PIZZA_PLACES:
-        place = fetch_place_data(query)
+    for place_id in PENTAGON_PIZZA_PLACES:
+        place = fetch_place_data(place_id)
 
-        if not place:
-            continue
-
-        name = place.get('name', 'Unknown')
+        name = place['name']
         popular_times = place.get('popular_times')
 
-        current_busyness = None
-        baseline = 50
-        status = 'unknown'
-        score = 50
+        if not popular_times:
+            continue
 
-        if popular_times:
-            current_busyness = get_current_busyness(popular_times, now)
-            baseline = get_baseline_busyness(popular_times, day_index, hour)
+        # Try live data first, fall back to historical
+        current_busyness = get_live_busyness(popular_times)
+        if current_busyness is None:
+            current_busyness = get_historical_busyness(popular_times, day_index, hour)
+        baseline = get_baseline_busyness(popular_times, hour)
 
-            if current_busyness is not None:
-                # Compare current to baseline
-                if baseline > 0:
-                    ratio = current_busyness / baseline
-                else:
-                    ratio = 1.0
+        if current_busyness is None or baseline is None:
+            continue
 
-                # Score: normal = ~50, elevated = 60-80, high = 80+
-                if ratio <= 1.0:
-                    score = int(50 * ratio)
-                    status = 'normal'
-                elif ratio <= 1.5:
-                    score = int(50 + (ratio - 1.0) * 60)
-                    status = 'elevated'
-                else:
-                    score = min(100, int(80 + (ratio - 1.5) * 40))
-                    status = 'high'
+        # Compare current to baseline
+        ratio = current_busyness / baseline
 
-                # Late night bonus - unusual activity is more significant
-                if is_late_night and current_busyness > 20:
-                    score = min(100, score + 15)
+        # Score: normal = ~50, elevated = 60-80, high = 80+
+        if ratio <= 1.0:
+            score = int(50 * ratio)
+            status = 'normal'
+        elif ratio <= 1.5:
+            score = int(50 + (ratio - 1.0) * 60)
+            status = 'elevated'
+        else:
+            score = min(100, int(80 + (ratio - 1.5) * 40))
+            status = 'high'
 
-                valid_places += 1
-                total_score += score
+        # Late night bonus - unusual activity is more significant
+        if is_late_night and current_busyness > 20:
+            score = min(100, score + 15)
+
+        valid_places += 1
+        total_score += score
 
         places_data.append({
             'name': name,
@@ -175,10 +176,10 @@ def get_pentagon_pizza_risk():
         })
 
     # Calculate aggregate risk
-    if valid_places > 0:
-        avg_score = total_score / valid_places
-    else:
-        avg_score = 50
+    if valid_places == 0:
+        raise ValueError('No valid popular_times data from any pizza place')
+
+    avg_score = total_score / valid_places
 
     # Risk contribution (scaled for overall impact)
     risk = int(avg_score * 0.6)  # Pentagon pizza is weighted factor

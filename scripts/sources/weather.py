@@ -1,7 +1,15 @@
 """
-Weather Module
+Weather Module - FM 34-81-1 Based
 Monitors weather conditions over Iran using Open-Meteo API.
 Clear weather is favorable for air operations = higher risk.
+
+GROUNDED METHODOLOGY (FM 34-81-1 Battlefield Weather Effects):
+- Precision-guided munitions require cloud-free line of sight
+- Visibility >10km optimal for operations
+- Winds <35 knots (65 km/h) limit for most operations
+- Severe weather (thunderstorms) cancels all operations
+
+Source: https://www.globalsecurity.org/intell/library/policy/army/fm/34-81-1/appe.htm
 
 API: Open-Meteo Forecast API (free, no API key required)
 Docs: https://open-meteo.com/en/docs
@@ -53,56 +61,60 @@ def calculate_weather_score(weather_data):
     Calculate a weather score for air operations feasibility.
     Higher score = better conditions for operations = higher risk.
 
-    Factors:
-    - Visibility (higher = better)
-    - Cloud cover (lower = better)
-    - Weather code (clear = better)
-    - Wind speed (moderate = OK)
+    Based on FM 34-81-1 Battlefield Weather Effects:
+    - Visibility: >10km required for precision operations
+    - Cloud cover: Clear line of sight needed for precision munitions
+    - Wind: <35 knots (65 km/h) operational limit
+    - Weather: Precipitation/storms ground operations
     """
     current = weather_data.get('current', {})
     score = 0
 
-    # Visibility (in meters)
+    # Visibility (in meters) - FM 34-81-1: >10km optimal
     visibility = current.get('visibility', 10000)
-    if visibility >= 50000:
-        score += 30  # Excellent visibility
-    elif visibility >= 20000:
-        score += 25  # Very good
+    if visibility >= 20000:
+        score += 30  # Excellent (>20km)
     elif visibility >= 10000:
-        score += 20  # Good visibility
+        score += 25  # Good - meets FM 34-81-1 minimum
     elif visibility >= 5000:
-        score += 10  # Marginal
-    # else: Poor visibility, no points
+        score += 10  # Marginal (5-10km)
+    elif visibility >= 3000:
+        score += 5   # Poor (3-5km)
+    # else: <3km = degraded operations, no points
 
-    # Cloud cover (percentage)
+    # Cloud cover (percentage) - clear skies needed for precision munitions
     clouds = current.get('cloud_cover', 0)
-    if clouds <= 10:
-        score += 30  # Clear skies
-    elif clouds <= 30:
-        score += 25  # Mostly clear
-    elif clouds <= 50:
-        score += 15  # Partly cloudy
-    elif clouds <= 75:
-        score += 5   # Mostly cloudy
-    # else: Overcast, no points
+    if clouds <= 20:
+        score += 30  # Clear - optimal for PGMs
+    elif clouds <= 40:
+        score += 20  # Mostly clear
+    elif clouds <= 60:
+        score += 10  # Partly cloudy - some degradation
+    elif clouds <= 80:
+        score += 5   # Mostly cloudy - significant degradation
+    # else: Overcast - no precision capability, no points
 
-    # Weather code
+    # Weather code - precipitation/storms cancel operations
     weather_code = current.get('weather_code', 0)
     if weather_code == 0:
-        score += 30  # Clear sky - perfect
-    elif weather_code <= 3:
-        score += 20  # Mainly clear to overcast
+        score += 30  # Clear sky - optimal
+    elif weather_code <= 2:
+        score += 25  # Mainly clear to partly cloudy
+    elif weather_code == 3:
+        score += 10  # Overcast but dry
     elif weather_code in [45, 48]:
-        score += 5   # Fog - poor
-    # Rain, snow, thunderstorm = 0 points
+        score += 5   # Fog - limited visibility
+    # Rain (51-65), Snow (71-77), Thunderstorm (95-99) = 0 points
 
-    # Wind (moderate is fine, extreme is bad)
+    # Wind (km/h) - FM 34-81-1: <35 knots (65 km/h) operational limit
     wind_speed = current.get('wind_speed_10m', 0)
-    if wind_speed <= 20:
-        score += 10  # Calm to moderate
-    elif wind_speed <= 40:
-        score += 5   # Breezy but OK
-    # Stronger winds reduce suitability
+    if wind_speed <= 30:
+        score += 10  # Calm to light (<16 knots)
+    elif wind_speed <= 50:
+        score += 7   # Moderate (16-27 knots)
+    elif wind_speed <= 65:
+        score += 3   # Near limit (27-35 knots)
+    # >65 km/h (35 knots) = operations limited, no points
 
     return min(100, score)
 

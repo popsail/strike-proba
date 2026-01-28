@@ -1,4 +1,4 @@
-const UPDATE_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
+const UPDATE_INTERVAL_MS = 13 * 60 * 1000; // 10 min update cycle + 3 min margin
 const DATA_REFRESH_INTERVAL_MS = 60 * 1000; // Check for new data every minute
 
 let lastData = null;
@@ -197,7 +197,9 @@ function drawTrendChart(history) {
 }
 
 function formatTimeAgo(isoString) {
-    const date = new Date(isoString);
+    // Append Z if no timezone to force UTC parsing
+    const dateStr = isoString.includes('Z') || isoString.includes('+') ? isoString : isoString + 'Z';
+    const date = new Date(dateStr);
     const now = new Date();
     const diffMs = now - date;
     const diffMins = Math.floor(diffMs / 60000);
@@ -223,7 +225,9 @@ function updateCountdown(lastUpdated) {
         return;
     }
 
-    const lastUpdate = new Date(lastUpdated);
+    // Append Z if no timezone to force UTC parsing
+    const dateStr = lastUpdated.includes('Z') || lastUpdated.includes('+') ? lastUpdated : lastUpdated + 'Z';
+    const lastUpdate = new Date(dateStr);
     const nextUpdate = new Date(lastUpdate.getTime() + UPDATE_INTERVAL_MS);
 
     lastUpdatedEl.textContent = formatTimeAgo(lastUpdated);

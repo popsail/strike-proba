@@ -1,10 +1,19 @@
 """
-Civil Aviation Module
+Civil Aviation Module - Rolling Baseline
 Monitors civilian air traffic over Iran using OpenSky Network API.
+
+GROUNDED METHODOLOGY:
+- Uses rolling 24-hour baseline from own historical data
+- Risk = percentage deviation from rolling average
+- Lower traffic than normal = higher risk (airspace avoidance)
+
+Research basis:
+- Normal Iran overflight: 1,000-1,400 daily (Source: News Central Asia)
+- Key indicator: sudden drops in traffic, not absolute numbers
+- NOTAM/FIR closures are strongest signal (future enhancement)
 
 API: OpenSky Network REST API /states/all
 Docs: https://openskynetwork.github.io/opensky-api/rest.html
-
 Uses anonymous access (no authentication required).
 """
 
@@ -23,7 +32,6 @@ IRAN_BBOX = {
 }
 
 # Persian Gulf region (international waters + coastal areas)
-# Covers: Kuwait, Bahrain, Qatar, UAE, Oman coast, Iran coast
 PERSIAN_GULF_BBOX = {
     'lamin': 23.5,    # South of Qatar/UAE
     'lamax': 30.5,    # Kuwait/Iran coast
@@ -31,9 +39,8 @@ PERSIAN_GULF_BBOX = {
     'lomax': 58.0     # Oman/Strait of Hormuz
 }
 
-# Baseline expected aircraft count (typical busy period)
-BASELINE_AIRCRAFT_IRAN = 80
-BASELINE_AIRCRAFT_GULF = 50
+# Minimum history needed for rolling baseline
+MIN_HISTORY_FOR_BASELINE = 6  # ~1 hour at 10-min intervals
 
 
 def fetch_aircraft(bbox):
@@ -54,76 +61,123 @@ def fetch_aircraft(bbox):
     return response.json()
 
 
-def parse_states(data):
+def count_airborne(data):
     """
-    Parse OpenSky states response into aircraft list.
-    State vector indices:
-    0: icao24, 1: callsign, 2: origin_country, 3: time_position,
-    4: last_contact, 5: longitude, 6: latitude, 7: baro_altitude,
-    8: on_ground, 9: velocity, 10: true_track, 11: vertical_rate,
-    12: sensors, 13: geo_altitude, 14: squawk, 15: spi, 16: position_source
+    Count airborne aircraft from OpenSky response.
     """
     states = data.get('states') or []
-    aircraft = []
+    count = 0
 
     for state in states:
-        if len(state) >= 17:
-            aircraft.append({
-                'icao24': state[0],
-                'callsign': (state[1] or '').strip(),
-                'origin_country': state[2],
-                'latitude': state[6],
-                'longitude': state[5],
-                'altitude': state[7] or state[13],
-                'on_ground': state[8],
-                'velocity': state[9]
-            })
+        if len(state) >= 9:
+            on_ground = state[8]
+            if not on_ground:
+                count += 1
 
-    return aircraft
+    return count
 
 
-def get_aviation_risk():
+def calculate_risk_from_baseline(current_count, history):
+    """
+    Calculate risk based on deviation from rolling baseline.
+
+    Grounded methodology:
+    - If insufficient history, use conservative estimate
+    - Otherwise, calculate % deviation from rolling average
+    - Lower traffic = higher risk (potential airspace avoidance)
+
+    Risk tiers (based on research):
+    - Normal (within 20% of baseline): 0-20 risk
+    - Concern (20-40% drop): 20-50 risk
+    - Alert (40-60% drop): 50-80 risk
+    - Critical (>60% drop): 80-100 risk
+
+    Returns: risk score 0-100
+    """
+    if len(history) < MIN_HISTORY_FOR_BASELINE:
+        # Cold start: use conservative linear estimate
+        # We expect ~50-100 aircraft in combined region per snapshot
+        # Lower than 30 is concerning, 0 is critical
+        if current_count >= 50:
+            return 0
+        elif current_count >= 30:
+            return int((50 - current_count) * 2)  # 0-40
+        elif current_count >= 10:
+            return int(40 + (30 - current_count) * 2)  # 40-80
+        else:
+            return min(100, 80 + (10 - current_count) * 2)  # 80-100
+
+    # Calculate rolling baseline
+    baseline = sum(history) / len(history)
+
+    if baseline <= 0:
+        baseline = 1  # Avoid division by zero
+
+    # Calculate deviation (negative = drop in traffic)
+    deviation = (baseline - current_count) / baseline
+
+    # Convert deviation to risk
+    # Positive deviation = traffic drop = higher risk
+    if deviation <= 0:
+        # Traffic at or above baseline = low risk
+        return max(0, int(-deviation * 20))  # 0-20 for increases
+    elif deviation < 0.2:
+        # Within 20% of baseline = normal
+        return int(deviation * 100)  # 0-20
+    elif deviation < 0.4:
+        # 20-40% drop = concern
+        return int(20 + (deviation - 0.2) * 150)  # 20-50
+    elif deviation < 0.6:
+        # 40-60% drop = alert
+        return int(50 + (deviation - 0.4) * 150)  # 50-80
+    else:
+        # >60% drop = critical
+        return min(100, int(80 + (deviation - 0.6) * 50))  # 80-100
+
+
+def get_aviation_risk(history=None):
     """
     Monitor civilian aviation over Iran and calculate risk score.
-    Lower than normal traffic = higher risk (airspace avoidance).
+    Uses rolling baseline from historical data.
+
+    Args:
+        history: List of previous total aircraft counts (for rolling baseline)
+
+    Returns dict with risk, detail, and raw_data.
     """
-    # Get aircraft over Iran
+    if history is None:
+        history = []
+
+    # Get aircraft counts
     iran_data = fetch_aircraft(IRAN_BBOX)
-    iran_aircraft = parse_states(iran_data)
-    iran_count = len([a for a in iran_aircraft if not a['on_ground']])
+    iran_count = count_airborne(iran_data)
 
-    # Get aircraft over Persian Gulf
     gulf_data = fetch_aircraft(PERSIAN_GULF_BBOX)
-    gulf_aircraft = parse_states(gulf_data)
-    gulf_count = len([a for a in gulf_aircraft if not a['on_ground']])
+    gulf_count = count_airborne(gulf_data)
 
-    # Calculate risk based on traffic deviation from baseline
-    # Fewer aircraft than expected = potential airspace avoidance = higher risk
-    iran_ratio = iran_count / BASELINE_AIRCRAFT_IRAN if BASELINE_AIRCRAFT_IRAN > 0 else 1
-    gulf_ratio = gulf_count / BASELINE_AIRCRAFT_GULF if BASELINE_AIRCRAFT_GULF > 0 else 1
+    total_count = iran_count + gulf_count
 
-    # Invert: lower traffic = higher risk
-    # Ratio 1.0 (normal) = 0 risk contribution
-    # Ratio 0.5 (half traffic) = 50 risk
-    # Ratio 0.0 (no traffic) = 100 risk
-    iran_risk = max(0, min(100, int((1 - iran_ratio) * 100)))
-    gulf_risk = max(0, min(100, int((1 - gulf_ratio) * 100)))
+    # Calculate risk from rolling baseline
+    risk = calculate_risk_from_baseline(total_count, history)
 
-    # Combined risk (weighted average)
-    combined_risk = int(iran_risk * 0.6 + gulf_risk * 0.4)
-
-    total_aircraft = iran_count + gulf_count
+    # Calculate baseline stats for transparency
+    if len(history) >= MIN_HISTORY_FOR_BASELINE:
+        baseline_avg = sum(history) / len(history)
+        deviation_pct = ((baseline_avg - total_count) / baseline_avg * 100) if baseline_avg > 0 else 0
+    else:
+        baseline_avg = None
+        deviation_pct = None
 
     return {
-        'risk': combined_risk,
-        'detail': f'{total_aircraft} flights in region',
+        'risk': risk,
+        'detail': f'{total_count} flights in region',
         'raw_data': {
-            'iran_aircraft_count': iran_count,
-            'gulf_aircraft_count': gulf_count,
-            'iran_baseline': BASELINE_AIRCRAFT_IRAN,
-            'gulf_baseline': BASELINE_AIRCRAFT_GULF,
-            'iran_ratio': round(iran_ratio, 2),
-            'gulf_ratio': round(gulf_ratio, 2),
+            'total_count': total_count,
+            'iran_count': iran_count,
+            'gulf_count': gulf_count,
+            'baseline_avg': round(baseline_avg, 1) if baseline_avg else None,
+            'deviation_pct': round(deviation_pct, 1) if deviation_pct is not None else None,
+            'history_length': len(history),
             'timestamp': datetime.now(timezone.utc).isoformat()
         }
     }
@@ -131,5 +185,6 @@ def get_aviation_risk():
 
 if __name__ == '__main__':
     import json
+    # Test with no history (cold start)
     result = get_aviation_risk()
     print(json.dumps(result, indent=2))
