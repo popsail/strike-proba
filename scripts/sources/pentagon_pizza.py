@@ -10,7 +10,6 @@ Docs: https://app.outscraper.com/api-docs
 """
 
 import os
-import time
 import requests
 from datetime import datetime, timezone
 
@@ -59,8 +58,6 @@ def fetch_place_data(place_id, retries=3):
             return data['data'][0][0]
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             last_error = e
-            if attempt < retries - 1:
-                time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
 
     raise last_error
 
