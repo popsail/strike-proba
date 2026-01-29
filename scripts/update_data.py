@@ -15,12 +15,12 @@ from pathlib import Path
 # Add sources directory to path
 sys.path.insert(0, str(Path(__file__).parent / 'sources'))
 
-from news import get_news_risk
-from aviation import get_aviation_risk
-from tankers import get_tanker_risk
-from pentagon_pizza import get_pentagon_pizza_risk
-from polymarket import get_polymarket_risk
-from weather import get_weather_risk
+from sources.news import get_news_risk
+from sources.aviation import get_aviation_risk
+from sources.tankers import get_tanker_risk
+from sources.pentagon_pizza import get_pentagon_pizza_risk
+from sources.polymarket import get_polymarket_risk
+from sources.weather import get_weather_risk
 
 # Output file path (relative to repo root)
 OUTPUT_FILE = Path(__file__).parent.parent / 'data.json'

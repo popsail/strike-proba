@@ -10,6 +10,7 @@ Docs: https://app.outscraper.com/api-docs
 """
 
 import os
+import time
 import requests
 from datetime import datetime, timezone
 
@@ -30,9 +31,10 @@ PENTAGON_PIZZA_PLACES = [
 DAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 
-def fetch_place_data(place_id):
+def fetch_place_data(place_id, retries=3):
     """
     Fetch place data including popular times from Outscraper by place_id.
+    Retries on timeout/connection errors.
     """
     if not OUTSCRAPER_API_KEY:
         raise ValueError('OUTSCRAPER_API_KEY environment variable not set')
@@ -47,12 +49,20 @@ def fetch_place_data(place_id):
         'async': 'false'
     }
 
-    response = requests.get(BASE_URL, params=params, headers=headers, timeout=90)
-    response.raise_for_status()
+    last_error = None
+    for attempt in range(retries):
+        try:
+            response = requests.get(BASE_URL, params=params, headers=headers, timeout=90)
+            response.raise_for_status()
+            # Outscraper returns {"data": [[{place}]]}
+            data = response.json()
+            return data['data'][0][0]
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            last_error = e
+            if attempt < retries - 1:
+                time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
 
-    # Outscraper returns {"data": [[{place}]]}
-    data = response.json()
-    return data['data'][0][0]
+    raise last_error
 
 
 def get_live_busyness(popular_times):
