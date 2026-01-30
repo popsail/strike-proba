@@ -4,13 +4,12 @@
     "detail": "0.212% global coverage",
     "raw_data": {
       "coverage_pct": 0.2122,
-      "avg_coverage_pct": 0.4069,
-      "data_points": 77,
+      "avg_coverage_pct": 0.4067,
+      "data_points": 76,
       "latest_timestamp": "2026-01-30T18:15:00+00:00",
-      "timestamp": "2026-01-30T20:34:02.558552+00:00"
+      "timestamp": "2026-01-30T20:59:16.465054+00:00"
     },
     "history": [
-      86,
       63,
       63,
       82,
@@ -26,20 +25,21 @@
       88,
       42,
       42,
+      42,
       42
     ]
   },
   "aviation": {
-    "risk": 0,
-    "detail": "226 flights in region",
+    "risk": 1,
+    "detail": "219 flights in region",
     "raw_data": {
-      "total_count": 226,
-      "iran_count": 84,
-      "gulf_count": 142,
+      "total_count": 219,
+      "iran_count": 95,
+      "gulf_count": 124,
       "baseline_avg": 221.7,
-      "deviation_pct": -2.0,
-      "history_length": 50,
-      "timestamp": "2026-01-30T20:34:03.946988+00:00",
+      "deviation_pct": 1.2,
+      "history_length": 51,
+      "timestamp": "2026-01-30T20:59:17.427781+00:00",
       "baseline_history": [
         244,
         220,
@@ -91,11 +91,11 @@
         225,
         279,
         302,
-        226
+        226,
+        219
       ]
     },
     "history": [
-      4,
       4,
       17,
       18,
@@ -111,11 +111,12 @@
       0,
       5,
       7,
-      0
+      0,
+      1
     ]
   },
   "tanker": {
-    "risk": 93,
+    "risk": 91,
     "detail": "1 detected (SURGE)",
     "raw_data": {
       "tanker_count": 1,
@@ -123,21 +124,21 @@
         "RRR4940"
       ],
       "baseline_avg": 0.3,
-      "ratio_to_baseline": 3.57,
+      "ratio_to_baseline": 3.4,
       "is_surge": true,
-      "history_length": 50,
+      "history_length": 51,
       "tankers": [
         {
           "icao24": "43c5e1",
           "callsign": "RRR4940",
           "origin_country": "United Kingdom",
-          "latitude": 31.5205,
-          "longitude": 33.1351,
-          "altitude": 8526.78,
-          "velocity": 205.45
+          "latitude": 34.2437,
+          "longitude": 33.1245,
+          "altitude": 3817.62,
+          "velocity": 168.32
         }
       ],
-      "timestamp": "2026-01-30T20:34:04.665083+00:00",
+      "timestamp": "2026-01-30T20:59:17.902669+00:00",
       "baseline_history": [
         0,
         0,
@@ -189,11 +190,11 @@
         0,
         0,
         0,
+        1,
         1
       ]
     },
     "history": [
-      0,
       0,
       0,
       95,
@@ -209,7 +210,8 @@
       0,
       0,
       0,
-      93
+      93,
+      91
     ]
   },
   "pentagon": {
@@ -256,7 +258,7 @@
           "status": "high"
         }
       ],
-      "timestamp": "2026-01-30T20:34:15.136648+00:00",
+      "timestamp": "2026-01-30T20:59:26.612918+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
@@ -264,7 +266,6 @@
       23,
       23,
       23,
-      23,
       28,
       28,
       28,
@@ -275,6 +276,7 @@
       27,
       28,
       28,
+      29,
       29,
       29,
       29
@@ -282,7 +284,7 @@
   },
   "polymarket": {
     "risk": 59,
-    "detail": "68% odds",
+    "detail": "70% odds",
     "raw_data": {
       "odds": 59,
       "markets": [
@@ -290,7 +292,7 @@
           "event_slug": "usisrael-strikes-iran-by",
           "event_name": "US/Israel strikes Iran",
           "market_question": "Will US or Israel strike Iran by February 28, 2026?",
-          "price": 0.505,
+          "price": 0.5,
           "odds_percent": 50
         },
         {
@@ -304,15 +306,14 @@
           "event_slug": "us-x-iran-military-engagement-by",
           "event_name": "US x Iran Military Engagement",
           "market_question": "U.S. x Iran Military Engagement by March 31, 2026?",
-          "price": 0.685,
-          "odds_percent": 68
+          "price": 0.7,
+          "odds_percent": 70
         }
       ],
       "best_market": "U.S. x Iran Military Engagement by March 31, 2026?",
-      "timestamp": "2026-01-30T20:34:15.429557+00:00"
+      "timestamp": "2026-01-30T20:59:26.861737+00:00"
     },
     "history": [
-      61,
       60,
       60,
       60,
@@ -328,6 +329,7 @@
       65,
       60,
       59,
+      59,
       59
     ]
   },
@@ -340,10 +342,10 @@
         {
           "name": "Tehran",
           "score": 100,
-          "temp": 2.7,
+          "temp": 2.4,
           "visibility": 49880.0,
           "clouds": 0,
-          "wind_speed": 5.1,
+          "wind_speed": 5.4,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -351,10 +353,10 @@
         {
           "name": "Isfahan",
           "score": 70,
-          "temp": 4.4,
+          "temp": 4.3,
           "visibility": 75200.0,
           "clouds": 62,
-          "wind_speed": 10.5,
+          "wind_speed": 10.1,
           "weather_code": 2,
           "description": "partly cloudy",
           "condition": "favorable"
@@ -362,7 +364,7 @@
         {
           "name": "Natanz",
           "score": 50,
-          "temp": 4.2,
+          "temp": 4.1,
           "visibility": 76240.0,
           "clouds": 96,
           "wind_speed": 3.1,
@@ -373,19 +375,18 @@
         {
           "name": "Bushehr",
           "score": 95,
-          "temp": 17.5,
+          "temp": 17.3,
           "visibility": 24140.0,
           "clouds": 17,
-          "wind_speed": 9.7,
+          "wind_speed": 9.2,
           "weather_code": 1,
           "description": "mainly clear",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-01-30T20:34:18.085077+00:00"
+      "timestamp": "2026-01-30T20:59:28.754562+00:00"
     },
     "history": [
-      100,
       93,
       96,
       98,
@@ -401,6 +402,7 @@
       82,
       70,
       70,
+      78,
       78
     ]
   },
@@ -642,9 +644,13 @@
         "timestamp": 1769805258085,
         "risk": 48,
         "pinned": true
+      },
+      {
+        "timestamp": 1769806768754,
+        "risk": 48
       }
     ],
     "elevated_count": 3
   },
-  "last_updated": "2026-01-30T20:34:18.085147+00:00"
+  "last_updated": "2026-01-30T20:59:28.754617+00:00"
 }
