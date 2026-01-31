@@ -4,13 +4,12 @@
     "detail": "0.629% global coverage",
     "raw_data": {
       "coverage_pct": 0.6292,
-      "avg_coverage_pct": 0.4127,
-      "data_points": 87,
+      "avg_coverage_pct": 0.4175,
+      "data_points": 86,
       "latest_timestamp": "2026-01-31T22:00:00+00:00",
-      "timestamp": "2026-01-31T22:44:21.161077+00:00"
+      "timestamp": "2026-01-31T22:58:51.996228+00:00"
     },
     "history": [
-      100,
       100,
       92,
       72,
@@ -26,20 +25,21 @@
       66,
       66,
       85,
+      100,
       100
     ]
   },
   "aviation": {
-    "risk": 17,
-    "detail": "177 flights in region",
+    "risk": 0,
+    "detail": "215 flights in region",
     "raw_data": {
-      "total_count": 177,
-      "iran_count": 72,
-      "gulf_count": 105,
-      "baseline_avg": 214.1,
-      "deviation_pct": 17.3,
-      "history_length": 95,
-      "timestamp": "2026-01-31T22:44:22.473514+00:00",
+      "total_count": 215,
+      "iran_count": 89,
+      "gulf_count": 126,
+      "baseline_avg": 213.8,
+      "deviation_pct": -0.6,
+      "history_length": 96,
+      "timestamp": "2026-01-31T22:58:53.068260+00:00",
       "baseline_history": [
         244,
         220,
@@ -136,11 +136,11 @@
         116,
         122,
         144,
-        177
+        177,
+        215
       ]
     },
     "history": [
-      1,
       4,
       0,
       2,
@@ -156,7 +156,8 @@
       59,
       55,
       39,
-      17
+      17,
+      0
     ]
   },
   "tanker": {
@@ -168,9 +169,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 95,
+      "history_length": 96,
       "tankers": [],
-      "timestamp": "2026-01-31T22:44:23.059380+00:00",
+      "timestamp": "2026-01-31T22:58:53.528626+00:00",
       "baseline_history": [
         0,
         0,
@@ -267,6 +268,7 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
@@ -274,7 +276,6 @@
       0,
       0,
       0,
-      0,
       100,
       0,
       0,
@@ -283,6 +284,7 @@
       0,
       0,
       100,
+      0,
       0,
       0,
       0,
@@ -334,12 +336,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-01-31T22:44:33.473214+00:00",
+      "timestamp": "2026-01-31T22:59:01.796972+00:00",
       "is_late_night": true,
       "is_weekend": true
     },
     "history": [
-      15,
       13,
       13,
       13,
@@ -354,6 +355,7 @@
       15,
       15,
       15,
+      22,
       22,
       22
     ]
@@ -387,10 +389,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-01-31T22:44:33.831886+00:00"
+      "timestamp": "2026-01-31T22:59:05.080845+00:00"
     },
     "history": [
-      63,
       63,
       62,
       62,
@@ -406,6 +407,7 @@
       58,
       58,
       57,
+      57,
       57
     ]
   },
@@ -418,7 +420,7 @@
         {
           "name": "Tehran",
           "score": 65,
-          "temp": 4.5,
+          "temp": 4.4,
           "visibility": 47920.0,
           "clouds": 83,
           "wind_speed": 4.7,
@@ -429,10 +431,10 @@
         {
           "name": "Isfahan",
           "score": 100,
-          "temp": 3.5,
+          "temp": 3.3,
           "visibility": 71320.0,
           "clouds": 3,
-          "wind_speed": 5.5,
+          "wind_speed": 5.2,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -440,10 +442,10 @@
         {
           "name": "Natanz",
           "score": 100,
-          "temp": 5.3,
+          "temp": 5.2,
           "visibility": 75740.0,
           "clouds": 6,
-          "wind_speed": 8.0,
+          "wind_speed": 7.8,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -451,19 +453,18 @@
         {
           "name": "Bushehr",
           "score": 100,
-          "temp": 16.5,
+          "temp": 16.4,
           "visibility": 24140.0,
           "clouds": 0,
-          "wind_speed": 8.5,
+          "wind_speed": 9.0,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-01-31T22:44:37.224467+00:00"
+      "timestamp": "2026-01-31T22:59:06.850355+00:00"
     },
     "history": [
-      87,
       93,
       93,
       93,
@@ -478,12 +479,13 @@
       87,
       88,
       88,
+      91,
       91,
       91
     ]
   },
   "total_risk": {
-    "risk": 42,
+    "risk": 39,
     "history": [
       {
         "timestamp": 1769643666964,
@@ -804,9 +806,13 @@
         "timestamp": 1769899477224,
         "risk": 42,
         "pinned": true
+      },
+      {
+        "timestamp": 1769900346850,
+        "risk": 39
       }
     ],
     "elevated_count": 3
   },
-  "last_updated": "2026-01-31T22:44:37.224525+00:00"
+  "last_updated": "2026-01-31T22:59:06.850434+00:00"
 }
