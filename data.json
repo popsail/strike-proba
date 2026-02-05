@@ -4,13 +4,12 @@
     "detail": "0.560% global coverage",
     "raw_data": {
       "coverage_pct": 0.5596,
-      "avg_coverage_pct": 0.3399,
-      "data_points": 70,
+      "avg_coverage_pct": 0.3387,
+      "data_points": 69,
       "latest_timestamp": "2026-02-05T06:15:00+00:00",
-      "timestamp": "2026-02-05T11:22:06.376635+00:00"
+      "timestamp": "2026-02-05T11:55:40.356389+00:00"
     },
     "history": [
-      33,
       33,
       33,
       33,
@@ -26,22 +25,22 @@
       100,
       100,
       100,
+      100,
       100
     ]
   },
   "aviation": {
-    "risk": 3,
-    "detail": "250 flights in region",
+    "risk": 1,
+    "detail": "228 flights in region",
     "raw_data": {
-      "total_count": 250,
-      "iran_count": 108,
-      "gulf_count": 142,
-      "baseline_avg": 215.0,
-      "deviation_pct": -16.3,
+      "total_count": 228,
+      "iran_count": 101,
+      "gulf_count": 127,
+      "baseline_avg": 215.3,
+      "deviation_pct": -5.9,
       "history_length": 144,
-      "timestamp": "2026-02-05T11:22:07.642857+00:00",
+      "timestamp": "2026-02-05T11:55:46.388672+00:00",
       "baseline_history": [
-        238,
         210,
         210,
         181,
@@ -184,11 +183,11 @@
         220,
         194,
         216,
-        250
+        250,
+        228
       ]
     },
     "history": [
-      2,
       3,
       3,
       19,
@@ -204,21 +203,34 @@
       0,
       9,
       0,
-      3
+      3,
+      1
     ]
   },
   "tanker": {
-    "risk": 0,
-    "detail": "0 detected (normal)",
+    "risk": 100,
+    "detail": "1 detected (SURGE)",
     "raw_data": {
-      "tanker_count": 0,
-      "callsigns": [],
+      "tanker_count": 1,
+      "callsigns": [
+        "RRR9958"
+      ],
       "baseline_avg": 0.1,
-      "ratio_to_baseline": null,
-      "is_surge": false,
-      "history_length": 176,
-      "tankers": [],
-      "timestamp": "2026-02-05T11:22:08.190082+00:00",
+      "ratio_to_baseline": 7.7,
+      "is_surge": true,
+      "history_length": 177,
+      "tankers": [
+        {
+          "icao24": "43c6f4",
+          "callsign": "RRR9958",
+          "origin_country": "United Kingdom",
+          "latitude": 32.5503,
+          "longitude": 37.3833,
+          "altitude": 8534.4,
+          "velocity": 223.08
+        }
+      ],
+      "timestamp": "2026-02-05T11:55:46.892411+00:00",
       "baseline_history": [
         0,
         0,
@@ -396,13 +408,13 @@
         0,
         0,
         0,
-        0
+        0,
+        1
       ]
     },
     "history": [
       0,
       0,
-      0,
       100,
       0,
       0,
@@ -416,7 +428,8 @@
       0,
       0,
       0,
-      0
+      0,
+      100
     ]
   },
   "pentagon": {
@@ -463,12 +476,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-05T11:22:24.645979+00:00",
+      "timestamp": "2026-02-05T11:56:01.079759+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
     "history": [
-      24,
       24,
       24,
       18,
@@ -484,6 +496,7 @@
       0,
       0,
       8,
+      32,
       32
     ]
   },
@@ -497,8 +510,8 @@
           "event_slug": "usisrael-strikes-iran-by",
           "event_name": "US/Israel strikes Iran",
           "market_question": "Will US or Israel strike Iran by February 28, 2026?",
-          "price": 0.265,
-          "odds_percent": 26
+          "price": 0.27,
+          "odds_percent": 27
         },
         {
           "event_slug": "israel-strikes-iran-by-june-30-2026",
@@ -511,15 +524,14 @@
           "event_slug": "us-x-iran-military-engagement-by",
           "event_name": "US x Iran Military Engagement",
           "market_question": "U.S. x Iran Military Engagement by March 31, 2026?",
-          "price": 0.4,
-          "odds_percent": 40
+          "price": 0.395,
+          "odds_percent": 39
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-05T11:22:25.074151+00:00"
+      "timestamp": "2026-02-05T11:56:01.279693+00:00"
     },
     "history": [
-      41,
       40,
       40,
       39,
@@ -530,6 +542,7 @@
       37,
       36,
       35,
+      36,
       36,
       36,
       36,
@@ -550,7 +563,7 @@
           "temp": 9.6,
           "visibility": 75660.0,
           "clouds": 27,
-          "wind_speed": 10.1,
+          "wind_speed": 12.0,
           "weather_code": 1,
           "description": "mainly clear",
           "condition": "clear"
@@ -561,7 +574,7 @@
           "temp": 10.4,
           "visibility": 80620.0,
           "clouds": 0,
-          "wind_speed": 12.6,
+          "wind_speed": 12.0,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -572,7 +585,7 @@
           "temp": 6.9,
           "visibility": 72160.0,
           "clouds": 88,
-          "wind_speed": 12.0,
+          "wind_speed": 10.6,
           "weather_code": 2,
           "description": "partly cloudy",
           "condition": "favorable"
@@ -580,19 +593,18 @@
         {
           "name": "Bushehr",
           "score": 85,
-          "temp": 17.9,
+          "temp": 18.0,
           "visibility": 24140.0,
           "clouds": 36,
-          "wind_speed": 26.2,
+          "wind_speed": 26.8,
           "weather_code": 1,
           "description": "mainly clear",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-02-05T11:22:27.443329+00:00"
+      "timestamp": "2026-02-05T11:56:03.202606+00:00"
     },
     "history": [
-      62,
       61,
       65,
       60,
@@ -608,11 +620,12 @@
       82,
       88,
       83,
+      83,
       83
     ]
   },
   "total_risk": {
-    "risk": 32,
+    "risk": 46,
     "history": [
       {
         "timestamp": 1769880733195,
@@ -929,9 +942,13 @@
         "timestamp": 1770290547443,
         "risk": 32,
         "pinned": true
+      },
+      {
+        "timestamp": 1770292563202,
+        "risk": 46
       }
     ],
-    "elevated_count": 2
+    "elevated_count": 3
   },
-  "last_updated": "2026-02-05T11:22:27.443627+00:00"
+  "last_updated": "2026-02-05T11:56:03.202856+00:00"
 }
