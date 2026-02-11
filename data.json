@@ -1,16 +1,15 @@
 {
   "news": {
-    "risk": 69,
-    "detail": "0.346% global coverage",
+    "risk": 79,
+    "detail": "0.400% global coverage",
     "raw_data": {
-      "coverage_pct": 0.3457,
-      "avg_coverage_pct": 0.2731,
+      "coverage_pct": 0.3997,
+      "avg_coverage_pct": 0.2762,
       "data_points": 84,
-      "latest_timestamp": "2026-02-11T10:30:00+00:00",
-      "timestamp": "2026-02-11T11:06:13.469779+00:00"
+      "latest_timestamp": "2026-02-11T11:15:00+00:00",
+      "timestamp": "2026-02-11T11:55:04.559958+00:00"
     },
     "history": [
-      46,
       45,
       45,
       45,
@@ -26,22 +25,22 @@
       88,
       0,
       61,
-      69
+      69,
+      79
     ]
   },
   "aviation": {
-    "risk": 4,
-    "detail": "211 flights in region",
+    "risk": 0,
+    "detail": "229 flights in region",
     "raw_data": {
-      "total_count": 211,
-      "iran_count": 91,
-      "gulf_count": 120,
-      "baseline_avg": 219.8,
-      "deviation_pct": 4.0,
+      "total_count": 229,
+      "iran_count": 99,
+      "gulf_count": 130,
+      "baseline_avg": 219.9,
+      "deviation_pct": -4.1,
       "history_length": 144,
-      "timestamp": "2026-02-11T11:06:14.475200+00:00",
+      "timestamp": "2026-02-11T11:55:05.847804+00:00",
       "baseline_history": [
-        137,
         128,
         177,
         222,
@@ -184,11 +183,11 @@
         249,
         220,
         215,
-        211
+        211,
+        229
       ]
     },
     "history": [
-      1,
       26,
       1,
       3,
@@ -204,21 +203,44 @@
       2,
       0,
       2,
-      4
+      4,
+      0
     ]
   },
   "tanker": {
-    "risk": 0,
-    "detail": "0 detected (normal)",
+    "risk": 100,
+    "detail": "2 detected (SURGE)",
     "raw_data": {
-      "tanker_count": 0,
-      "callsigns": [],
+      "tanker_count": 2,
+      "callsigns": [
+        "RRR9958",
+        "RRR2303"
+      ],
       "baseline_avg": 0.1,
-      "ratio_to_baseline": null,
-      "is_surge": false,
-      "history_length": 331,
-      "tankers": [],
-      "timestamp": "2026-02-11T11:06:14.905021+00:00",
+      "ratio_to_baseline": 14.13,
+      "is_surge": true,
+      "history_length": 332,
+      "tankers": [
+        {
+          "icao24": "43c6f7",
+          "callsign": "RRR9958",
+          "origin_country": "United Kingdom",
+          "latitude": 32.2778,
+          "longitude": 36.9668,
+          "altitude": 7924.8,
+          "velocity": 174.52
+        },
+        {
+          "icao24": "43c6f8",
+          "callsign": "RRR2303",
+          "origin_country": "United Kingdom",
+          "latitude": 34.545,
+          "longitude": 32.8329,
+          "altitude": 1645.92,
+          "velocity": 126.7
+        }
+      ],
+      "timestamp": "2026-02-11T11:55:06.625820+00:00",
       "baseline_history": [
         0,
         0,
@@ -551,13 +573,13 @@
         0,
         0,
         0,
-        0
+        0,
+        2
       ]
     },
     "history": [
       0,
       0,
-      0,
       100,
       0,
       0,
@@ -571,7 +593,8 @@
       0,
       0,
       0,
-      0
+      0,
+      100
     ]
   },
   "pentagon": {
@@ -618,12 +641,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-11T11:06:25.697558+00:00",
+      "timestamp": "2026-02-11T11:55:18.506095+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
     "history": [
-      26,
       23,
       21,
       19,
@@ -639,6 +661,7 @@
       4,
       4,
       6,
+      20,
       20
     ]
   },
@@ -671,10 +694,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-11T11:06:25.894913+00:00"
+      "timestamp": "2026-02-11T11:55:18.816355+00:00"
     },
     "history": [
-      39,
       38,
       38,
       38,
@@ -685,6 +707,7 @@
       37,
       38,
       38,
+      37,
       37,
       37,
       37,
@@ -702,10 +725,10 @@
         {
           "name": "Tehran",
           "score": 50,
-          "temp": 15.7,
+          "temp": 15.9,
           "visibility": 77460.0,
           "clouds": 100,
-          "wind_speed": 10.4,
+          "wind_speed": 8.7,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
@@ -713,10 +736,10 @@
         {
           "name": "Isfahan",
           "score": 47,
-          "temp": 19.0,
+          "temp": 18.5,
           "visibility": 78580.0,
           "clouds": 100,
-          "wind_speed": 32.2,
+          "wind_speed": 36.5,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
@@ -724,10 +747,10 @@
         {
           "name": "Natanz",
           "score": 40,
-          "temp": 16.5,
+          "temp": 16.1,
           "visibility": 79300.0,
           "clouds": 100,
-          "wind_speed": 73.3,
+          "wind_speed": 79.0,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
@@ -735,19 +758,18 @@
         {
           "name": "Bushehr",
           "score": 47,
-          "temp": 22.5,
+          "temp": 22.4,
           "visibility": 24140.0,
           "clouds": 100,
-          "wind_speed": 32.1,
+          "wind_speed": 31.8,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
         }
       ],
-      "timestamp": "2026-02-11T11:06:27.419140+00:00"
+      "timestamp": "2026-02-11T11:55:21.328367+00:00"
     },
     "history": [
-      47,
       60,
       66,
       68,
@@ -763,11 +785,12 @@
       55,
       50,
       47,
+      46,
       46
     ]
   },
   "total_risk": {
-    "risk": 26,
+    "risk": 42,
     "history": [
       {
         "timestamp": 1770551492542,
@@ -1016,9 +1039,13 @@
       {
         "timestamp": 1770768084100,
         "risk": 27
+      },
+      {
+        "timestamp": 1770810921328,
+        "risk": 42
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 2
   },
-  "last_updated": "2026-02-11T11:06:27.419403+00:00"
+  "last_updated": "2026-02-11T11:55:21.328611+00:00"
 }
