@@ -4,13 +4,12 @@
     "detail": "0.219% global coverage",
     "raw_data": {
       "coverage_pct": 0.2187,
-      "avg_coverage_pct": 0.21,
-      "data_points": 77,
+      "avg_coverage_pct": 0.2055,
+      "data_points": 75,
       "latest_timestamp": "2026-02-12T19:00:00+00:00",
-      "timestamp": "2026-02-12T20:31:03.719949+00:00"
+      "timestamp": "2026-02-12T21:03:08.942168+00:00"
     },
     "history": [
-      41,
       31,
       31,
       31,
@@ -26,22 +25,22 @@
       26,
       26,
       43,
+      43,
       43
     ]
   },
   "aviation": {
-    "risk": 5,
-    "detail": "280 flights in region",
+    "risk": 8,
+    "detail": "202 flights in region",
     "raw_data": {
-      "total_count": 280,
-      "iran_count": 121,
-      "gulf_count": 159,
-      "baseline_avg": 221.1,
-      "deviation_pct": -26.6,
+      "total_count": 202,
+      "iran_count": 86,
+      "gulf_count": 116,
+      "baseline_avg": 221.4,
+      "deviation_pct": 8.8,
       "history_length": 144,
-      "timestamp": "2026-02-12T20:31:04.918552+00:00",
+      "timestamp": "2026-02-12T21:03:10.345396+00:00",
       "baseline_history": [
-        213,
         248,
         236,
         243,
@@ -184,11 +183,11 @@
         264,
         245,
         280,
-        280
+        280,
+        202
       ]
     },
     "history": [
-      19,
       3,
       6,
       1,
@@ -204,7 +203,8 @@
       4,
       2,
       5,
-      5
+      5,
+      8
     ]
   },
   "tanker": {
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 361,
+      "history_length": 362,
       "tankers": [],
-      "timestamp": "2026-02-12T20:31:05.509994+00:00",
+      "timestamp": "2026-02-12T21:03:10.993665+00:00",
       "baseline_history": [
         0,
         0,
@@ -581,13 +581,13 @@
         1,
         0,
         0,
+        0,
         0
       ]
     },
     "history": [
       0,
       0,
-      0,
       100,
       0,
       0,
@@ -599,54 +599,54 @@
       0,
       100,
       100,
+      0,
       0,
       0,
       0
     ]
   },
   "pentagon": {
-    "risk": 16,
+    "risk": 17,
     "detail": "Normal",
     "raw_data": {
-      "score": 27.5,
-      "risk_contribution": 16,
+      "score": 29.0,
+      "risk_contribution": 17,
       "status": "Normal",
       "places": [
         {
           "name": "Wiseguy Pizza",
           "current_busyness": 22,
-          "baseline": 67.6,
-          "score": 16,
+          "baseline": 61.7,
+          "score": 17,
           "status": "normal"
         },
         {
           "name": "We, The Pizza",
           "current_busyness": 0,
-          "baseline": 61.6,
+          "baseline": 55.0,
           "score": 0,
           "status": "normal"
         },
         {
           "name": "California Pizza Kitchen at Pentagon",
-          "current_busyness": 58,
-          "baseline": 70.7,
-          "score": 41,
+          "current_busyness": 45,
+          "baseline": 60.0,
+          "score": 37,
           "status": "normal"
         },
         {
           "name": "District Pizza Palace",
-          "current_busyness": 48,
-          "baseline": 45.7,
-          "score": 53,
+          "current_busyness": 56,
+          "baseline": 46.3,
+          "score": 62,
           "status": "elevated"
         }
       ],
-      "timestamp": "2026-02-12T20:31:21.498501+00:00",
+      "timestamp": "2026-02-12T21:03:49.909713+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
     "history": [
-      41,
       41,
       21,
       21,
@@ -662,12 +662,13 @@
       28,
       28,
       28,
-      16
+      16,
+      17
     ]
   },
   "polymarket": {
     "risk": 33,
-    "detail": "49% odds",
+    "detail": "48% odds",
     "raw_data": {
       "odds": 33,
       "markets": [
@@ -675,15 +676,15 @@
           "event_slug": "usisrael-strikes-iran-by",
           "event_name": "US/Israel strikes Iran",
           "market_question": "Will US or Israel strike Iran by February 28, 2026?",
-          "price": 0.135,
+          "price": 0.13,
           "odds_percent": 13
         },
         {
           "event_slug": "israel-strikes-iran-by-june-30-2026",
           "event_name": "Israel strikes Iran by June 30",
           "market_question": "Israel strikes Iran by June 30, 2026?",
-          "price": 0.495,
-          "odds_percent": 49
+          "price": 0.485,
+          "odds_percent": 48
         },
         {
           "event_slug": "us-x-iran-military-engagement-by",
@@ -694,10 +695,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-12T20:31:21.848357+00:00"
+      "timestamp": "2026-02-12T21:03:50.500234+00:00"
     },
     "history": [
-      35,
       36,
       36,
       36,
@@ -713,44 +713,45 @@
       33,
       33,
       33,
+      33,
       33
     ]
   },
   "weather": {
-    "risk": 78,
-    "detail": "favorable",
+    "risk": 83,
+    "detail": "clear",
     "raw_data": {
-      "avg_score": 78.8,
+      "avg_score": 83.8,
       "locations": [
         {
           "name": "Tehran",
-          "score": 70,
-          "temp": 10.1,
-          "visibility": 67660.0,
-          "clouds": 62,
-          "wind_speed": 4.0,
-          "weather_code": 1,
-          "description": "mainly clear",
-          "condition": "favorable"
+          "score": 100,
+          "temp": 9.8,
+          "visibility": 64540.0,
+          "clouds": 2,
+          "wind_speed": 4.1,
+          "weather_code": 0,
+          "description": "clear sky",
+          "condition": "clear"
         },
         {
           "name": "Isfahan",
           "score": 100,
-          "temp": 8.6,
-          "visibility": 64340.0,
+          "temp": 8.2,
+          "visibility": 59500.0,
           "clouds": 0,
-          "wind_speed": 3.4,
+          "wind_speed": 4.0,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
         },
         {
           "name": "Natanz",
-          "score": 95,
-          "temp": 10.2,
-          "visibility": 76140.0,
-          "clouds": 11,
-          "wind_speed": 11.5,
+          "score": 85,
+          "temp": 10.1,
+          "visibility": 76000.0,
+          "clouds": 36,
+          "wind_speed": 11.0,
           "weather_code": 2,
           "description": "partly cloudy",
           "condition": "clear"
@@ -761,16 +762,15 @@
           "temp": 20.6,
           "visibility": 24140.0,
           "clouds": 100,
-          "wind_speed": 6.1,
+          "wind_speed": 5.8,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
         }
       ],
-      "timestamp": "2026-02-12T20:31:24.314936+00:00"
+      "timestamp": "2026-02-12T21:03:53.651659+00:00"
     },
     "history": [
-      59,
       58,
       57,
       54,
@@ -786,142 +786,13 @@
       68,
       73,
       73,
-      78
+      78,
+      83
     ]
   },
   "total_risk": {
     "risk": 24,
     "history": [
-      {
-        "timestamp": 1770551492542,
-        "risk": 44,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770557640171,
-        "risk": 26,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770561802797,
-        "risk": 44,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770565129488,
-        "risk": 29,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770568286622,
-        "risk": 23,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770572463393,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770576198567,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770579650797,
-        "risk": 27,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770582720433,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770586227724,
-        "risk": 28,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770589388776,
-        "risk": 31,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770593249750,
-        "risk": 26,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770602069288,
-        "risk": 23,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770611090775,
-        "risk": 31,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770616347627,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770620437815,
-        "risk": 40,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770624160436,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770628034552,
-        "risk": 23,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770632034175,
-        "risk": 26,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770635539609,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770642968721,
-        "risk": 21,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770647555404,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770651271584,
-        "risk": 30,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770658435251,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770661969386,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770666580637,
-        "risk": 24,
-        "pinned": true
-      },
       {
         "timestamp": 1770671138620,
         "risk": 28,
@@ -1033,18 +904,6 @@
         "pinned": true
       },
       {
-        "timestamp": 1770762978450,
-        "risk": 45
-      },
-      {
-        "timestamp": 1770768084100,
-        "risk": 27
-      },
-      {
-        "timestamp": 1770810921328,
-        "risk": 42
-      },
-      {
         "timestamp": 1770819553899,
         "risk": 22,
         "pinned": true
@@ -1075,26 +934,14 @@
         "pinned": true
       },
       {
-        "timestamp": 1770843205125,
-        "risk": 39
-      },
-      {
         "timestamp": 1770845465064,
         "risk": 44,
         "pinned": true
       },
       {
-        "timestamp": 1770847335311,
-        "risk": 33
-      },
-      {
         "timestamp": 1770850045643,
         "risk": 35,
         "pinned": true
-      },
-      {
-        "timestamp": 1770851865719,
-        "risk": 29
       },
       {
         "timestamp": 1770853748575,
@@ -1122,10 +969,6 @@
         "pinned": true
       },
       {
-        "timestamp": 1770883528848,
-        "risk": 22
-      },
-      {
         "timestamp": 1770886948923,
         "risk": 24,
         "pinned": true
@@ -1139,10 +982,6 @@
         "timestamp": 1770894210415,
         "risk": 26,
         "pinned": true
-      },
-      {
-        "timestamp": 1770897140271,
-        "risk": 25
       },
       {
         "timestamp": 1770901171882,
@@ -1175,16 +1014,24 @@
         "pinned": true
       },
       {
+        "timestamp": 1770928284315,
+        "risk": 24,
+        "pinned": true
+      },
+      {
+        "timestamp": 1770897140271,
+        "risk": 25
+      },
+      {
         "timestamp": 1770926106955,
         "risk": 24
       },
       {
-        "timestamp": 1770928284315,
-        "risk": 24,
-        "pinned": true
+        "timestamp": 1770930233651,
+        "risk": 24
       }
     ],
     "elevated_count": 1
   },
-  "last_updated": "2026-02-12T20:31:24.315235+00:00"
+  "last_updated": "2026-02-12T21:03:53.651962+00:00"
 }
