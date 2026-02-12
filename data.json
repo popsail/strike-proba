@@ -4,13 +4,12 @@
     "detail": "0.219% global coverage",
     "raw_data": {
       "coverage_pct": 0.2187,
-      "avg_coverage_pct": 0.2055,
-      "data_points": 75,
+      "avg_coverage_pct": 0.1891,
+      "data_points": 72,
       "latest_timestamp": "2026-02-12T19:00:00+00:00",
-      "timestamp": "2026-02-12T21:03:08.942168+00:00"
+      "timestamp": "2026-02-12T21:47:27.832257+00:00"
     },
     "history": [
-      31,
       31,
       31,
       31,
@@ -26,22 +25,22 @@
       26,
       43,
       43,
+      43,
       43
     ]
   },
   "aviation": {
-    "risk": 8,
-    "detail": "202 flights in region",
+    "risk": 39,
+    "detail": "148 flights in region",
     "raw_data": {
-      "total_count": 202,
-      "iran_count": 86,
-      "gulf_count": 116,
-      "baseline_avg": 221.4,
-      "deviation_pct": 8.8,
+      "total_count": 148,
+      "iran_count": 63,
+      "gulf_count": 85,
+      "baseline_avg": 221.3,
+      "deviation_pct": 33.1,
       "history_length": 144,
-      "timestamp": "2026-02-12T21:03:10.345396+00:00",
+      "timestamp": "2026-02-12T21:47:29.013482+00:00",
       "baseline_history": [
-        248,
         236,
         243,
         236,
@@ -184,11 +183,11 @@
         245,
         280,
         280,
-        202
+        202,
+        148
       ]
     },
     "history": [
-      3,
       6,
       1,
       0,
@@ -204,21 +203,34 @@
       2,
       5,
       5,
-      8
+      8,
+      39
     ]
   },
   "tanker": {
-    "risk": 0,
-    "detail": "0 detected (normal)",
+    "risk": 100,
+    "detail": "1 detected (SURGE)",
     "raw_data": {
-      "tanker_count": 0,
-      "callsigns": [],
+      "tanker_count": 1,
+      "callsigns": [
+        "RRR9961"
+      ],
       "baseline_avg": 0.2,
-      "ratio_to_baseline": null,
-      "is_surge": false,
-      "history_length": 362,
-      "tankers": [],
-      "timestamp": "2026-02-12T21:03:10.993665+00:00",
+      "ratio_to_baseline": 6.37,
+      "is_surge": true,
+      "history_length": 363,
+      "tankers": [
+        {
+          "icao24": "43c6f4",
+          "callsign": "RRR9961",
+          "origin_country": "United Kingdom",
+          "latitude": 31.7758,
+          "longitude": 35.8256,
+          "altitude": 8534.4,
+          "velocity": 220.33
+        }
+      ],
+      "timestamp": "2026-02-12T21:47:29.611329+00:00",
       "baseline_history": [
         0,
         0,
@@ -582,12 +594,12 @@
         0,
         0,
         0,
-        0
+        0,
+        1
       ]
     },
     "history": [
       0,
-      0,
       100,
       0,
       0,
@@ -602,7 +614,8 @@
       0,
       0,
       0,
-      0
+      0,
+      100
     ]
   },
   "pentagon": {
@@ -642,12 +655,11 @@
           "status": "elevated"
         }
       ],
-      "timestamp": "2026-02-12T21:03:49.909713+00:00",
+      "timestamp": "2026-02-12T21:47:40.909873+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
     "history": [
-      41,
       21,
       21,
       21,
@@ -663,6 +675,7 @@
       28,
       28,
       16,
+      17,
       17
     ]
   },
@@ -676,7 +689,7 @@
           "event_slug": "usisrael-strikes-iran-by",
           "event_name": "US/Israel strikes Iran",
           "market_question": "Will US or Israel strike Iran by February 28, 2026?",
-          "price": 0.13,
+          "price": 0.135,
           "odds_percent": 13
         },
         {
@@ -695,10 +708,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-12T21:03:50.500234+00:00"
+      "timestamp": "2026-02-12T21:47:41.260832+00:00"
     },
     "history": [
-      36,
       36,
       36,
       36,
@@ -714,46 +726,47 @@
       33,
       33,
       33,
+      33,
       33
     ]
   },
   "weather": {
-    "risk": 83,
+    "risk": 86,
     "detail": "clear",
     "raw_data": {
-      "avg_score": 83.8,
+      "avg_score": 86.2,
       "locations": [
         {
           "name": "Tehran",
-          "score": 100,
-          "temp": 9.8,
-          "visibility": 64540.0,
-          "clouds": 2,
-          "wind_speed": 4.1,
-          "weather_code": 0,
-          "description": "clear sky",
+          "score": 95,
+          "temp": 10.6,
+          "visibility": 74500.0,
+          "clouds": 12,
+          "wind_speed": 3.8,
+          "weather_code": 1,
+          "description": "mainly clear",
           "condition": "clear"
         },
         {
           "name": "Isfahan",
           "score": 100,
-          "temp": 8.2,
-          "visibility": 59500.0,
+          "temp": 8.0,
+          "visibility": 62040.0,
           "clouds": 0,
-          "wind_speed": 4.0,
+          "wind_speed": 3.8,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
         },
         {
           "name": "Natanz",
-          "score": 85,
-          "temp": 10.1,
-          "visibility": 76000.0,
-          "clouds": 36,
-          "wind_speed": 11.0,
-          "weather_code": 2,
-          "description": "partly cloudy",
+          "score": 100,
+          "temp": 9.8,
+          "visibility": 76740.0,
+          "clouds": 2,
+          "wind_speed": 10.5,
+          "weather_code": 0,
+          "description": "clear sky",
           "condition": "clear"
         },
         {
@@ -762,16 +775,15 @@
           "temp": 20.6,
           "visibility": 24140.0,
           "clouds": 100,
-          "wind_speed": 5.8,
+          "wind_speed": 4.7,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
         }
       ],
-      "timestamp": "2026-02-12T21:03:53.651659+00:00"
+      "timestamp": "2026-02-12T21:47:43.598681+00:00"
     },
     "history": [
-      58,
       57,
       54,
       65,
@@ -787,11 +799,12 @@
       73,
       73,
       78,
-      83
+      83,
+      86
     ]
   },
   "total_risk": {
-    "risk": 24,
+    "risk": 46,
     "history": [
       {
         "timestamp": 1770671138620,
@@ -1029,9 +1042,14 @@
       {
         "timestamp": 1770930233651,
         "risk": 24
+      },
+      {
+        "timestamp": 1770932863598,
+        "risk": 46,
+        "pinned": true
       }
     ],
-    "elevated_count": 1
+    "elevated_count": 2
   },
-  "last_updated": "2026-02-12T21:03:53.651962+00:00"
+  "last_updated": "2026-02-12T21:47:43.598959+00:00"
 }
