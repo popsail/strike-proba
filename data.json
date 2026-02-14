@@ -1,16 +1,15 @@
 {
   "news": {
-    "risk": 23,
-    "detail": "0.118% global coverage",
+    "risk": 100,
+    "detail": "0.504% global coverage",
     "raw_data": {
-      "coverage_pct": 0.1183,
-      "avg_coverage_pct": 0.1443,
-      "data_points": 71,
-      "latest_timestamp": "2026-02-14T00:30:00+00:00",
-      "timestamp": "2026-02-14T03:57:07.158013+00:00"
+      "coverage_pct": 0.5042,
+      "avg_coverage_pct": 0.195,
+      "data_points": 81,
+      "latest_timestamp": "2026-02-14T04:15:00+00:00",
+      "timestamp": "2026-02-14T05:09:12.291319+00:00"
     },
     "history": [
-      36,
       36,
       36,
       23,
@@ -26,22 +25,22 @@
       23,
       23,
       0,
-      23
+      23,
+      100
     ]
   },
   "aviation": {
-    "risk": 11,
-    "detail": "194 flights in region",
+    "risk": 0,
+    "detail": "226 flights in region",
     "raw_data": {
-      "total_count": 194,
-      "iran_count": 88,
-      "gulf_count": 106,
-      "baseline_avg": 220.2,
-      "deviation_pct": 11.9,
+      "total_count": 226,
+      "iran_count": 97,
+      "gulf_count": 129,
+      "baseline_avg": 220.5,
+      "deviation_pct": -2.5,
       "history_length": 144,
-      "timestamp": "2026-02-14T03:57:08.557390+00:00",
+      "timestamp": "2026-02-14T05:09:13.337863+00:00",
       "baseline_history": [
-        144,
         167,
         254,
         267,
@@ -184,11 +183,11 @@
         263,
         277,
         240,
-        194
+        194,
+        226
       ]
     },
     "history": [
-      3,
       2,
       2,
       2,
@@ -204,7 +203,8 @@
       3,
       5,
       1,
-      11
+      11,
+      0
     ]
   },
   "tanker": {
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 392,
+      "history_length": 393,
       "tankers": [],
-      "timestamp": "2026-02-14T03:57:09.155681+00:00",
+      "timestamp": "2026-02-14T05:09:13.794680+00:00",
       "baseline_history": [
         0,
         0,
@@ -612,6 +612,7 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
@@ -665,12 +666,11 @@
           "status": "high"
         }
       ],
-      "timestamp": "2026-02-14T03:57:19.966425+00:00",
+      "timestamp": "2026-02-14T05:09:22.478811+00:00",
       "is_late_night": true,
       "is_weekend": true
     },
     "history": [
-      16,
       16,
       16,
       15,
@@ -686,12 +686,13 @@
       46,
       46,
       56,
+      56,
       56
     ]
   },
   "polymarket": {
     "risk": 32,
-    "detail": "46% odds",
+    "detail": "47% odds",
     "raw_data": {
       "odds": 32,
       "markets": [
@@ -706,8 +707,8 @@
           "event_slug": "israel-strikes-iran-by-june-30-2026",
           "event_name": "Israel strikes Iran by June 30",
           "market_question": "Israel strikes Iran by June 30, 2026?",
-          "price": 0.465,
-          "odds_percent": 46
+          "price": 0.47,
+          "odds_percent": 47
         },
         {
           "event_slug": "us-x-iran-military-engagement-by",
@@ -718,10 +719,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-14T03:57:20.648377+00:00"
+      "timestamp": "2026-02-14T05:09:22.761876+00:00"
     },
     "history": [
-      31,
       31,
       30,
       30,
@@ -737,33 +737,34 @@
       32,
       31,
       31,
+      32,
       32
     ]
   },
   "weather": {
-    "risk": 73,
+    "risk": 67,
     "detail": "favorable",
     "raw_data": {
-      "avg_score": 73.8,
+      "avg_score": 67.5,
       "locations": [
         {
           "name": "Tehran",
-          "score": 100,
-          "temp": 7.8,
-          "visibility": 74640.0,
-          "clouds": 0,
-          "wind_speed": 5.4,
-          "weather_code": 0,
-          "description": "clear sky",
-          "condition": "clear"
+          "score": 70,
+          "temp": 9.8,
+          "visibility": 76320.0,
+          "clouds": 62,
+          "wind_speed": 4.8,
+          "weather_code": 2,
+          "description": "partly cloudy",
+          "condition": "favorable"
         },
         {
           "name": "Isfahan",
           "score": 50,
-          "temp": 5.0,
-          "visibility": 71540.0,
+          "temp": 6.0,
+          "visibility": 69380.0,
           "clouds": 100,
-          "wind_speed": 2.5,
+          "wind_speed": 1.1,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
@@ -771,30 +772,29 @@
         {
           "name": "Natanz",
           "score": 50,
-          "temp": 11.3,
-          "visibility": 77620.0,
+          "temp": 13.0,
+          "visibility": 80340.0,
           "clouds": 100,
-          "wind_speed": 11.1,
+          "wind_speed": 12.8,
           "weather_code": 3,
           "description": "overcast",
           "condition": "marginal"
         },
         {
           "name": "Bushehr",
-          "score": 95,
-          "temp": 20.2,
+          "score": 100,
+          "temp": 20.5,
           "visibility": 24140.0,
-          "clouds": 19,
+          "clouds": 0,
           "wind_speed": 8.3,
-          "weather_code": 1,
-          "description": "mainly clear",
+          "weather_code": 0,
+          "description": "clear sky",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-02-14T03:57:23.074438+00:00"
+      "timestamp": "2026-02-14T05:09:24.580772+00:00"
     },
     "history": [
-      83,
       83,
       92,
       92,
@@ -810,11 +810,12 @@
       81,
       81,
       80,
-      73
+      73,
+      67
     ]
   },
   "total_risk": {
-    "risk": 26,
+    "risk": 31,
     "history": [
       {
         "timestamp": 1770671138620,
@@ -1193,9 +1194,14 @@
         "timestamp": 1771041443074,
         "risk": 26,
         "pinned": true
+      },
+      {
+        "timestamp": 1771045764580,
+        "risk": 31,
+        "pinned": true
       }
     ],
-    "elevated_count": 2
+    "elevated_count": 3
   },
-  "last_updated": "2026-02-14T03:57:23.074746+00:00"
+  "last_updated": "2026-02-14T05:09:24.581011+00:00"
 }
