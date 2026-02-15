@@ -1,16 +1,15 @@
 {
   "news": {
-    "risk": 100,
-    "detail": "0.521% global coverage",
+    "risk": 42,
+    "detail": "0.213% global coverage",
     "raw_data": {
-      "coverage_pct": 0.5208,
-      "avg_coverage_pct": 0.2591,
-      "data_points": 81,
-      "latest_timestamp": "2026-02-15T21:15:00+00:00",
-      "timestamp": "2026-02-15T22:57:07.120747+00:00"
+      "coverage_pct": 0.2128,
+      "avg_coverage_pct": 0.2747,
+      "data_points": 85,
+      "latest_timestamp": "2026-02-15T23:00:00+00:00",
+      "timestamp": "2026-02-15T23:28:12.479485+00:00"
     },
     "history": [
-      50,
       42,
       19,
       59,
@@ -26,22 +25,22 @@
       67,
       100,
       100,
-      100
+      100,
+      42
     ]
   },
   "aviation": {
-    "risk": 0,
-    "detail": "222 flights in region",
+    "risk": 4,
+    "detail": "265 flights in region",
     "raw_data": {
-      "total_count": 222,
-      "iran_count": 96,
-      "gulf_count": 126,
-      "baseline_avg": 220.1,
-      "deviation_pct": -0.9,
+      "total_count": 265,
+      "iran_count": 115,
+      "gulf_count": 150,
+      "baseline_avg": 220.7,
+      "deviation_pct": -20.0,
       "history_length": 144,
-      "timestamp": "2026-02-15T22:57:08.140440+00:00",
+      "timestamp": "2026-02-15T23:28:13.588452+00:00",
       "baseline_history": [
-        138,
         201,
         240,
         239,
@@ -184,11 +183,11 @@
         164,
         147,
         140,
-        222
+        222,
+        265
       ]
     },
     "history": [
-      8,
       15,
       8,
       2,
@@ -204,7 +203,8 @@
       29,
       40,
       44,
-      0
+      0,
+      4
     ]
   },
   "tanker": {
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 448,
+      "history_length": 449,
       "tankers": [],
-      "timestamp": "2026-02-15T22:57:08.678125+00:00",
+      "timestamp": "2026-02-15T23:28:14.148297+00:00",
       "baseline_history": [
         0,
         0,
@@ -668,11 +668,11 @@
         0,
         1,
         0,
+        0,
         0
       ]
     },
     "history": [
-      100,
       0,
       0,
       0,
@@ -687,22 +687,23 @@
       0,
       0,
       100,
+      0,
       0,
       0
     ]
   },
   "pentagon": {
-    "risk": 25,
+    "risk": 27,
     "detail": "Normal",
     "raw_data": {
-      "score": 42.6,
-      "risk_contribution": 25,
+      "score": 46.6,
+      "risk_contribution": 27,
       "status": "Normal",
       "places": [
         {
           "name": "Wiseguy Pizza",
           "current_busyness": 0,
-          "baseline": 60.7,
+          "baseline": 53.5,
           "score": 0,
           "status": "normal"
         },
@@ -716,31 +717,30 @@
         {
           "name": "California Pizza Kitchen at Pentagon",
           "current_busyness": 0,
-          "baseline": 53.5,
+          "baseline": 62.4,
           "score": 0,
           "status": "normal"
         },
         {
           "name": "Extreme Pizza",
           "current_busyness": 85,
-          "baseline": 58.0,
-          "score": 92,
+          "baseline": 59.2,
+          "score": 91,
           "status": "elevated"
         },
         {
           "name": "District Pizza Palace",
-          "current_busyness": 20,
-          "baseline": 40.6,
-          "score": 24,
+          "current_busyness": 24,
+          "baseline": 40.0,
+          "score": 45,
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-15T22:57:18.551998+00:00",
+      "timestamp": "2026-02-15T23:28:30.758022+00:00",
       "is_late_night": true,
       "is_weekend": true
     },
     "history": [
-      21,
       21,
       21,
       21,
@@ -756,7 +756,8 @@
       32,
       29,
       25,
-      25
+      25,
+      27
     ]
   },
   "polymarket": {
@@ -783,12 +784,12 @@
           "event_slug": "us-x-iran-military-engagement-by",
           "event_name": "US x Iran Military Engagement",
           "market_question": "U.S. x Iran Military Engagement by March 31, 2026?",
-          "price": 0.32,
+          "price": 0.325,
           "odds_percent": 32
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-15T22:57:18.926623+00:00"
+      "timestamp": "2026-02-15T23:28:31.405947+00:00"
     },
     "history": [
       30,
@@ -804,9 +805,9 @@
       30,
       30,
       30,
+      31,
+      31,
       30,
-      31,
-      31,
       30
     ]
   },
@@ -819,8 +820,8 @@
         {
           "name": "Tehran",
           "score": 100,
-          "temp": 6.7,
-          "visibility": 72580.0,
+          "temp": 6.5,
+          "visibility": 73620.0,
           "clouds": 0,
           "wind_speed": 3.3,
           "weather_code": 0,
@@ -830,10 +831,10 @@
         {
           "name": "Isfahan",
           "score": 100,
-          "temp": 5.6,
-          "visibility": 72900.0,
+          "temp": 5.3,
+          "visibility": 73080.0,
           "clouds": 0,
-          "wind_speed": 7.9,
+          "wind_speed": 7.2,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -841,10 +842,10 @@
         {
           "name": "Natanz",
           "score": 100,
-          "temp": 6.1,
-          "visibility": 76000.0,
+          "temp": 6.0,
+          "visibility": 76060.0,
           "clouds": 0,
-          "wind_speed": 18.9,
+          "wind_speed": 20.5,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -852,7 +853,7 @@
         {
           "name": "Bushehr",
           "score": 97,
-          "temp": 19.9,
+          "temp": 19.8,
           "visibility": 24140.0,
           "clouds": 0,
           "wind_speed": 34.7,
@@ -861,10 +862,9 @@
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-02-15T22:57:20.874160+00:00"
+      "timestamp": "2026-02-15T23:28:33.554753+00:00"
     },
     "history": [
-      93,
       94,
       94,
       93,
@@ -879,78 +879,14 @@
       99,
       99,
       98,
+      99,
       99,
       99
     ]
   },
   "total_risk": {
-    "risk": 29,
+    "risk": 24,
     "history": [
-      {
-        "timestamp": 1770881417495,
-        "risk": 37,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770886948923,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770890654088,
-        "risk": 39,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770894210415,
-        "risk": 26,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770901171882,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770908954042,
-        "risk": 25,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770912464234,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770916494073,
-        "risk": 37,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770919815641,
-        "risk": 37,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770923970498,
-        "risk": 22,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770928284315,
-        "risk": 24,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770932863598,
-        "risk": 46,
-        "pinned": true
-      },
-      {
-        "timestamp": 1770936685017,
-        "risk": 27,
-        "pinned": true
-      },
       {
         "timestamp": 1770940366227,
         "risk": 23,
@@ -1142,38 +1078,14 @@
         "pinned": true
       },
       {
-        "timestamp": 1771104054660,
-        "risk": 32
-      },
-      {
-        "timestamp": 1771108175145,
-        "risk": 35
-      },
-      {
-        "timestamp": 1771111244580,
-        "risk": 25
-      },
-      {
-        "timestamp": 1771113598016,
-        "risk": 20
-      },
-      {
         "timestamp": 1771142547292,
         "risk": 35,
         "pinned": true
       },
       {
-        "timestamp": 1771145377465,
-        "risk": 37
-      },
-      {
         "timestamp": 1771148960494,
         "risk": 20,
         "pinned": true
-      },
-      {
-        "timestamp": 1771149749748,
-        "risk": 20
       },
       {
         "timestamp": 1771152253063,
@@ -1186,10 +1098,6 @@
         "pinned": true
       },
       {
-        "timestamp": 1771159293973,
-        "risk": 35
-      },
-      {
         "timestamp": 1771162536154,
         "risk": 33,
         "pinned": true
@@ -1200,21 +1108,9 @@
         "pinned": true
       },
       {
-        "timestamp": 1771167759626,
-        "risk": 26
-      },
-      {
         "timestamp": 1771169820088,
         "risk": 22,
         "pinned": true
-      },
-      {
-        "timestamp": 1771170844936,
-        "risk": 25
-      },
-      {
-        "timestamp": 1771172705356,
-        "risk": 25
       },
       {
         "timestamp": 1771174552682,
@@ -1222,22 +1118,33 @@
         "pinned": true
       },
       {
-        "timestamp": 1771176217300,
-        "risk": 38
-      },
-      {
         "timestamp": 1771177885341,
         "risk": 40,
         "pinned": true
       },
       {
-        "timestamp": 1771180255282,
-        "risk": 25
-      },
-      {
         "timestamp": 1771182285059,
         "risk": 25,
         "pinned": true
+      },
+      {
+        "timestamp": 1771188616712,
+        "risk": 26,
+        "pinned": true
+      },
+      {
+        "timestamp": 1771191786751,
+        "risk": 53,
+        "pinned": true
+      },
+      {
+        "timestamp": 1771196240874,
+        "risk": 29,
+        "pinned": true
+      },
+      {
+        "timestamp": 1771180255282,
+        "risk": 25
       },
       {
         "timestamp": 1771184178054,
@@ -1248,30 +1155,19 @@
         "risk": 27
       },
       {
-        "timestamp": 1771188616712,
-        "risk": 26,
-        "pinned": true
-      },
-      {
         "timestamp": 1771189963788,
         "risk": 32
-      },
-      {
-        "timestamp": 1771191786751,
-        "risk": 53,
-        "pinned": true
       },
       {
         "timestamp": 1771194654662,
         "risk": 38
       },
       {
-        "timestamp": 1771196240874,
-        "risk": 29,
-        "pinned": true
+        "timestamp": 1771198113554,
+        "risk": 24
       }
     ],
-    "elevated_count": 2
+    "elevated_count": 1
   },
-  "last_updated": "2026-02-15T22:57:20.874398+00:00"
+  "last_updated": "2026-02-15T23:28:33.554999+00:00"
 }
