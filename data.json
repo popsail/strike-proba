@@ -1,16 +1,15 @@
 {
   "news": {
-    "risk": 100,
-    "detail": "0.533% global coverage",
+    "risk": 47,
+    "detail": "0.238% global coverage",
     "raw_data": {
-      "coverage_pct": 0.5327,
-      "avg_coverage_pct": 0.3882,
-      "data_points": 81,
-      "latest_timestamp": "2026-02-17T14:45:00+00:00",
-      "timestamp": "2026-02-17T17:12:11.724065+00:00"
+      "coverage_pct": 0.238,
+      "avg_coverage_pct": 0.4201,
+      "data_points": 85,
+      "latest_timestamp": "2026-02-17T17:00:00+00:00",
+      "timestamp": "2026-02-17T18:08:19.980532+00:00"
     },
     "history": [
-      15,
       25,
       25,
       72,
@@ -26,22 +25,22 @@
       96,
       0,
       100,
-      100
+      100,
+      47
     ]
   },
   "aviation": {
-    "risk": 15,
-    "detail": "186 flights in region",
+    "risk": 1,
+    "detail": "233 flights in region",
     "raw_data": {
-      "total_count": 186,
-      "iran_count": 80,
-      "gulf_count": 106,
-      "baseline_avg": 219.0,
-      "deviation_pct": 15.1,
+      "total_count": 233,
+      "iran_count": 93,
+      "gulf_count": 140,
+      "baseline_avg": 218.6,
+      "deviation_pct": -6.6,
       "history_length": 144,
-      "timestamp": "2026-02-17T17:12:12.548204+00:00",
+      "timestamp": "2026-02-17T18:08:21.056269+00:00",
       "baseline_history": [
-        283,
         231,
         172,
         146,
@@ -184,11 +183,11 @@
         238,
         208,
         201,
-        186
+        186,
+        233
       ]
     },
     "history": [
-      51,
       53,
       51,
       2,
@@ -204,7 +203,8 @@
       1,
       5,
       8,
-      15
+      15,
+      1
     ]
   },
   "tanker": {
@@ -213,24 +213,24 @@
     "raw_data": {
       "tanker_count": 1,
       "callsigns": [
-        "RRR4283"
+        "RRR9961"
       ],
       "baseline_avg": 0.2,
-      "ratio_to_baseline": 6.5,
+      "ratio_to_baseline": 6.43,
       "is_surge": true,
-      "history_length": 481,
+      "history_length": 482,
       "tankers": [
         {
-          "icao24": "43c5dd",
-          "callsign": "RRR4283",
+          "icao24": "43c6f4",
+          "callsign": "RRR9961",
           "origin_country": "United Kingdom",
-          "latitude": 34.35,
-          "longitude": 32.5281,
-          "altitude": 4892.04,
-          "velocity": 131.32
+          "latitude": 32.4576,
+          "longitude": 37.2409,
+          "altitude": 8839.2,
+          "velocity": 289.04
         }
       ],
-      "timestamp": "2026-02-17T17:12:12.952356+00:00",
+      "timestamp": "2026-02-17T18:08:21.530835+00:00",
       "baseline_history": [
         0,
         0,
@@ -713,12 +713,12 @@
         0,
         0,
         0,
+        1,
         1
       ]
     },
     "history": [
       0,
-      0,
       100,
       0,
       0,
@@ -733,59 +733,59 @@
       0,
       0,
       0,
+      100,
       100
     ]
   },
   "pentagon": {
-    "risk": 25,
+    "risk": 27,
     "detail": "Normal",
     "raw_data": {
-      "score": 41.8,
-      "risk_contribution": 25,
+      "score": 46.6,
+      "risk_contribution": 27,
       "status": "Normal",
       "places": [
         {
           "name": "Wiseguy Pizza",
           "current_busyness": 77,
-          "baseline": 67.3,
-          "score": 58,
+          "baseline": 76.3,
+          "score": 50,
           "status": "elevated"
         },
         {
           "name": "We, The Pizza",
-          "current_busyness": 6,
-          "baseline": 67.3,
-          "score": 4,
+          "current_busyness": 56,
+          "baseline": 63.3,
+          "score": 44,
           "status": "normal"
         },
         {
           "name": "California Pizza Kitchen at Pentagon",
-          "current_busyness": 81,
-          "baseline": 69.7,
-          "score": 59,
+          "current_busyness": 88,
+          "baseline": 76.6,
+          "score": 58,
           "status": "elevated"
         },
         {
           "name": "Extreme Pizza",
           "current_busyness": 62,
-          "baseline": 64.6,
-          "score": 48,
+          "baseline": 70.3,
+          "score": 44,
           "status": "normal"
         },
         {
           "name": "District Pizza Palace",
-          "current_busyness": 44,
+          "current_busyness": 40,
           "baseline": 53.7,
-          "score": 40,
+          "score": 37,
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-17T17:13:55.133889+00:00",
+      "timestamp": "2026-02-17T18:09:08.288981+00:00",
       "is_late_night": false,
       "is_weekend": false
     },
     "history": [
-      18,
       25,
       20,
       21,
@@ -801,12 +801,13 @@
       27,
       28,
       26,
-      25
+      25,
+      27
     ]
   },
   "polymarket": {
     "risk": 34,
-    "detail": "50% odds",
+    "detail": "49% odds",
     "raw_data": {
       "odds": 34,
       "markets": [
@@ -821,8 +822,8 @@
           "event_slug": "israel-strikes-iran-by-june-30-2026",
           "event_name": "Israel strikes Iran by June 30",
           "market_question": "Israel strikes Iran by June 30, 2026?",
-          "price": 0.5,
-          "odds_percent": 50
+          "price": 0.495,
+          "odds_percent": 49
         },
         {
           "event_slug": "us-x-iran-military-engagement-by",
@@ -833,10 +834,9 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-17T17:13:55.337662+00:00"
+      "timestamp": "2026-02-17T18:09:08.551302+00:00"
     },
     "history": [
-      34,
       34,
       34,
       33,
@@ -852,6 +852,7 @@
       34,
       34,
       35,
+      34,
       34
     ]
   },
@@ -864,10 +865,10 @@
         {
           "name": "Tehran",
           "score": 100,
-          "temp": 11.9,
-          "visibility": 77520.0,
+          "temp": 10.3,
+          "visibility": 75700.0,
           "clouds": 0,
-          "wind_speed": 5.4,
+          "wind_speed": 5.9,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -875,10 +876,10 @@
         {
           "name": "Isfahan",
           "score": 100,
-          "temp": 11.7,
-          "visibility": 83680.0,
+          "temp": 11.1,
+          "visibility": 84100.0,
           "clouds": 0,
-          "wind_speed": 3.3,
+          "wind_speed": 1.5,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -887,9 +888,9 @@
           "name": "Natanz",
           "score": 100,
           "temp": 11.9,
-          "visibility": 83880.0,
+          "visibility": 85600.0,
           "clouds": 0,
-          "wind_speed": 6.3,
+          "wind_speed": 6.6,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -900,13 +901,13 @@
           "temp": 20.5,
           "visibility": 24140.0,
           "clouds": 0,
-          "wind_speed": 5.9,
+          "wind_speed": 5.1,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-02-17T17:13:56.897303+00:00"
+      "timestamp": "2026-02-17T18:09:10.421335+00:00"
     },
     "history": [
       100,
@@ -929,7 +930,7 @@
     ]
   },
   "total_risk": {
-    "risk": 49,
+    "risk": 41,
     "history": [
       {
         "timestamp": 1771055862078,
@@ -1226,9 +1227,14 @@
         "timestamp": 1771348436897,
         "risk": 49,
         "pinned": true
+      },
+      {
+        "timestamp": 1771351750421,
+        "risk": 41,
+        "pinned": true
       }
     ],
-    "elevated_count": 3
+    "elevated_count": 2
   },
-  "last_updated": "2026-02-17T17:13:56.897562+00:00"
+  "last_updated": "2026-02-17T18:09:10.421601+00:00"
 }
