@@ -4,13 +4,12 @@
     "detail": "0.519% global coverage",
     "raw_data": {
       "coverage_pct": 0.5186,
-      "avg_coverage_pct": 0.3444,
-      "data_points": 39,
+      "avg_coverage_pct": 0.3421,
+      "data_points": 38,
       "latest_timestamp": "2026-02-21T23:45:00+00:00",
-      "timestamp": "2026-02-22T11:18:33.000104+00:00"
+      "timestamp": "2026-02-22T11:39:37.913049+00:00"
     },
     "history": [
-      60,
       60,
       60,
       60,
@@ -26,22 +25,22 @@
       100,
       100,
       100,
+      100,
       100
     ]
   },
   "aviation": {
-    "risk": 0,
-    "detail": "208 flights in region",
+    "risk": 1,
+    "detail": "204 flights in region",
     "raw_data": {
-      "total_count": 208,
-      "iran_count": 92,
-      "gulf_count": 116,
+      "total_count": 204,
+      "iran_count": 91,
+      "gulf_count": 113,
       "baseline_avg": 207.1,
-      "deviation_pct": -0.4,
+      "deviation_pct": 1.5,
       "history_length": 144,
-      "timestamp": "2026-02-22T11:18:33.936407+00:00",
+      "timestamp": "2026-02-22T11:39:39.100701+00:00",
       "baseline_history": [
-        221,
         238,
         186,
         254,
@@ -184,11 +183,11 @@
         182,
         161,
         188,
-        208
+        208,
+        204
       ]
     },
     "history": [
-      2,
       2,
       4,
       5,
@@ -204,7 +203,8 @@
       12,
       23,
       9,
-      0
+      0,
+      1
     ]
   },
   "tanker": {
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 549,
+      "history_length": 550,
       "tankers": [],
-      "timestamp": "2026-02-22T11:18:34.405660+00:00",
+      "timestamp": "2026-02-22T11:39:39.594092+00:00",
       "baseline_history": [
         0,
         0,
@@ -769,12 +769,12 @@
         0,
         0,
         1,
+        0,
         0
       ]
     },
     "history": [
       0,
-      0,
       100,
       0,
       0,
@@ -789,6 +789,7 @@
       0,
       0,
       100,
+      0,
       0
     ]
   },
@@ -829,12 +830,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-22T11:18:44.174334+00:00",
+      "timestamp": "2026-02-22T11:39:50.696142+00:00",
       "is_late_night": false,
       "is_weekend": true
     },
     "history": [
-      12,
       11,
       13,
       13,
@@ -850,6 +850,7 @@
       1,
       1,
       1,
+      15,
       15
     ]
   },
@@ -882,13 +883,12 @@
         }
       ],
       "best_market": "Israel strikes Iran by June 30, 2026?",
-      "timestamp": "2026-02-22T11:18:44.357852+00:00"
+      "timestamp": "2026-02-22T11:39:51.152830+00:00"
     },
     "history": [
       48,
       48,
       48,
-      48,
       47,
       47,
       48,
@@ -901,6 +901,7 @@
       48,
       48,
       48,
+      47,
       47
     ]
   },
@@ -916,7 +917,7 @@
           "temp": 20.8,
           "visibility": 57760.0,
           "clouds": 0,
-          "wind_speed": 8.1,
+          "wind_speed": 7.8,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -927,7 +928,7 @@
           "temp": 21.7,
           "visibility": 66360.0,
           "clouds": 0,
-          "wind_speed": 5.6,
+          "wind_speed": 5.1,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -935,10 +936,10 @@
         {
           "name": "Natanz",
           "score": 100,
-          "temp": 18.2,
+          "temp": 18.1,
           "visibility": 56000.0,
           "clouds": 0,
-          "wind_speed": 16.5,
+          "wind_speed": 16.6,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
@@ -946,19 +947,19 @@
         {
           "name": "Bushehr",
           "score": 100,
-          "temp": 20.7,
+          "temp": 20.6,
           "visibility": 24140.0,
           "clouds": 0,
-          "wind_speed": 16.1,
+          "wind_speed": 16.5,
           "weather_code": 0,
           "description": "clear sky",
           "condition": "clear"
         }
       ],
-      "timestamp": "2026-02-22T11:18:46.304986+00:00"
+      "timestamp": "2026-02-22T11:39:53.193189+00:00"
     },
     "history": [
-      98,
+      100,
       100,
       100,
       100,
@@ -1337,9 +1338,13 @@
       {
         "timestamp": 1771759126305,
         "risk": 35
+      },
+      {
+        "timestamp": 1771760393193,
+        "risk": 35
       }
     ],
     "elevated_count": 2
   },
-  "last_updated": "2026-02-22T11:18:46.305141+00:00"
+  "last_updated": "2026-02-22T11:39:53.193423+00:00"
 }
