@@ -7,7 +7,7 @@
       "avg_coverage_pct": 0.5827,
       "data_points": 38,
       "latest_timestamp": "2026-02-27T21:45:00+00:00",
-      "timestamp": "2026-02-28T10:47:45.678334+00:00"
+      "timestamp": "2026-02-28T10:59:02.244796+00:00"
     },
     "history": [
       100,
@@ -34,14 +34,13 @@
     "detail": "5 flights in region",
     "raw_data": {
       "total_count": 5,
-      "iran_count": 1,
-      "gulf_count": 4,
-      "baseline_avg": 198.0,
+      "iran_count": 2,
+      "gulf_count": 3,
+      "baseline_avg": 196.5,
       "deviation_pct": 97.5,
       "history_length": 144,
-      "timestamp": "2026-02-28T10:47:46.840273+00:00",
+      "timestamp": "2026-02-28T10:59:03.052582+00:00",
       "baseline_history": [
-        215,
         241,
         221,
         238,
@@ -184,11 +183,11 @@
         236,
         203,
         199,
+        5,
         5
       ]
     },
     "history": [
-      0,
       5,
       8,
       0,
@@ -204,6 +203,7 @@
       3,
       0,
       0,
+      98,
       98
     ]
   },
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 638,
+      "history_length": 639,
       "tankers": [],
-      "timestamp": "2026-02-28T10:47:47.326597+00:00",
+      "timestamp": "2026-02-28T10:59:03.443418+00:00",
       "baseline_history": [
         0,
         0,
@@ -858,12 +858,12 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
     "history": [
       0,
-      0,
       100,
       0,
       100,
@@ -872,6 +872,7 @@
       0,
       100,
       100,
+      0,
       0,
       0,
       0,
@@ -911,12 +912,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-28T10:48:14.658906+00:00",
+      "timestamp": "2026-02-28T10:59:29.213721+00:00",
       "is_late_night": false,
       "is_weekend": true
     },
     "history": [
-      9,
       22,
       22,
       24,
@@ -928,6 +928,7 @@
       36,
       52,
       38,
+      15,
       15,
       15,
       15,
@@ -950,10 +951,9 @@
         }
       ],
       "best_market": "U.S. x Iran Military Engagement by March 31, 2026?",
-      "timestamp": "2026-02-28T10:48:15.175729+00:00"
+      "timestamp": "2026-02-28T10:59:29.588438+00:00"
     },
     "history": [
-      47,
       54,
       54,
       54,
@@ -967,6 +967,7 @@
       57,
       55,
       94,
+      99,
       99,
       99,
       99
@@ -1023,10 +1024,9 @@
           "condition": "marginal"
         }
       ],
-      "timestamp": "2026-02-28T10:48:17.700311+00:00"
+      "timestamp": "2026-02-28T10:59:31.139532+00:00"
     },
     "history": [
-      100,
       88,
       88,
       87,
@@ -1042,6 +1042,7 @@
       83,
       83,
       83,
+      71,
       71
     ]
   },
@@ -1212,9 +1213,13 @@
         "timestamp": 1772275697700,
         "risk": 74,
         "pinned": true
+      },
+      {
+        "timestamp": 1772276371139,
+        "risk": 74
       }
     ],
     "elevated_count": 4
   },
-  "last_updated": "2026-02-28T10:48:17.700564+00:00"
+  "last_updated": "2026-02-28T10:59:31.139752+00:00"
 }
