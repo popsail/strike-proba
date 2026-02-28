@@ -7,7 +7,7 @@
       "avg_coverage_pct": 0.5541,
       "data_points": 49,
       "latest_timestamp": "2026-02-27T21:45:00+00:00",
-      "timestamp": "2026-02-28T07:45:54.073036+00:00"
+      "timestamp": "2026-02-28T07:57:22.829811+00:00"
     },
     "history": [
       100,
@@ -31,17 +31,16 @@
   },
   "aviation": {
     "risk": 0,
-    "detail": "203 flights in region",
+    "detail": "199 flights in region",
     "raw_data": {
-      "total_count": 203,
-      "iran_count": 85,
+      "total_count": 199,
+      "iran_count": 81,
       "gulf_count": 118,
-      "baseline_avg": 198.3,
-      "deviation_pct": -2.4,
+      "baseline_avg": 198.0,
+      "deviation_pct": -0.5,
       "history_length": 144,
-      "timestamp": "2026-02-28T07:45:54.923414+00:00",
+      "timestamp": "2026-02-28T07:57:23.758969+00:00",
       "baseline_history": [
-        198,
         209,
         215,
         241,
@@ -184,11 +183,11 @@
         246,
         257,
         236,
-        203
+        203,
+        199
       ]
     },
     "history": [
-      4,
       12,
       0,
       5,
@@ -204,6 +203,7 @@
       4,
       6,
       3,
+      0,
       0
     ]
   },
@@ -216,9 +216,9 @@
       "baseline_avg": 0.2,
       "ratio_to_baseline": null,
       "is_surge": false,
-      "history_length": 636,
+      "history_length": 637,
       "tankers": [],
-      "timestamp": "2026-02-28T07:45:55.339895+00:00",
+      "timestamp": "2026-02-28T07:57:24.222912+00:00",
       "baseline_history": [
         0,
         0,
@@ -856,11 +856,11 @@
         0,
         0,
         0,
+        0,
         0
       ]
     },
     "history": [
-      100,
       0,
       0,
       0,
@@ -872,6 +872,7 @@
       0,
       100,
       100,
+      0,
       0,
       0,
       0,
@@ -909,12 +910,11 @@
           "status": "normal"
         }
       ],
-      "timestamp": "2026-02-28T07:46:05.492698+00:00",
+      "timestamp": "2026-02-28T07:57:33.225536+00:00",
       "is_late_night": false,
       "is_weekend": true
     },
     "history": [
-      9,
       9,
       9,
       22,
@@ -930,6 +930,7 @@
       38,
       15,
       15,
+      15,
       15
     ]
   },
@@ -943,7 +944,7 @@
           "event_slug": "usisrael-strikes-iran-by",
           "event_name": "US/Israel strikes Iran",
           "market_question": "Will US or Israel strike Iran by February 28, 2026?",
-          "price": 0.9985,
+          "price": 0.999,
           "odds_percent": 99
         },
         {
@@ -957,15 +958,14 @@
           "event_slug": "us-x-iran-military-engagement-by",
           "event_name": "US x Iran Military Engagement",
           "market_question": "U.S. x Iran Military Engagement by March 31, 2026?",
-          "price": 0.996,
+          "price": 0.9955,
           "odds_percent": 99
         }
       ],
       "best_market": "Will US or Israel strike Iran by February 28, 2026?",
-      "timestamp": "2026-02-28T07:46:05.831953+00:00"
+      "timestamp": "2026-02-28T07:57:33.426826+00:00"
     },
     "history": [
-      42,
       43,
       47,
       54,
@@ -981,6 +981,7 @@
       57,
       55,
       94,
+      99,
       99
     ]
   },
@@ -1035,10 +1036,9 @@
           "condition": "marginal"
         }
       ],
-      "timestamp": "2026-02-28T07:46:07.411563+00:00"
+      "timestamp": "2026-02-28T07:57:35.326692+00:00"
     },
     "history": [
-      100,
       100,
       100,
       88,
@@ -1052,6 +1052,7 @@
       78,
       80,
       85,
+      83,
       83,
       83,
       83
@@ -1215,9 +1216,13 @@
         "timestamp": 1772264767411,
         "risk": 55,
         "pinned": true
+      },
+      {
+        "timestamp": 1772265455326,
+        "risk": 55
       }
     ],
     "elevated_count": 3
   },
-  "last_updated": "2026-02-28T07:46:07.411711+00:00"
+  "last_updated": "2026-02-28T07:57:35.326848+00:00"
 }
